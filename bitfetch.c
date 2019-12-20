@@ -64,13 +64,13 @@ int main()
            COL_WHITE_B "ram:    " COL_RES COL_MAGENTA "%lum / %lum / %lum / %lum\n" COL_RES
            COL_WHITE_B "swap:   " COL_RES COL_MAGENTA "%lum / %lum\n"               COL_RES
            COL_WHITE_B "procs:  " COL_RES COL_MAGENTA "%d\n"                        COL_RES,
-           username, uinfo.nodename,
-           distroName,
-           uinfo.release,
-           sinfo.uptime / 60 / 60, /* uptime in hours */
+           username, uinfo.nodename, /* user and host name */
+           distroName,               /* name of your linux distro */
+           uinfo.release,            /* kernel release */
+           sinfo.uptime / 60 / 60,   /* uptime in hours */
            sinfo.totalram / 1024 / 1024, sinfo.freeram / 1024 / 1024, sinfo.sharedram / 1024 / 1024, sinfo.bufferram / 1024 / 1024, /* ram info in Mb */
            sinfo.totalswap / 1024 / 1024, sinfo.freeswap / 1024 / 1024, /* swap info in Mb */
-           sinfo.procs          /* number of current processes */
+           sinfo.procs               /* number of current processes */
         );
 
     return 0;
