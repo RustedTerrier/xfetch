@@ -6,7 +6,7 @@ build:
 	@gcc -O3 bitfetch.c -o bitfetch
 
 .PHONY: install
-install:
+install: all
 	@cp bitfetch ${PREFIX}/bin/bitfetch -v
 
 .PHONY: uninstall
