@@ -25,6 +25,7 @@
 
 int main()
 {
+
     struct utsname uinfo;
     struct sysinfo sinfo;
     struct passwd *pw = getpwuid(geteuid());
@@ -44,7 +45,6 @@ int main()
         if (distroName[i + 5] == '\n') distroName[i + 5] = '\0';
         else if (distroName[i + 5] == '"') distroName[i + 5] = ' ';
         distroName[i] = distroName[i + 5];
-
     }
     fclose(fp);
     if (distroName[0] == ' ')
@@ -57,22 +57,22 @@ int main()
 
     /* print all information */
     fprintf(stdout,
-        "\n"
-        COL_MAGENTA "   .-----.      " "%s" COL_WHITE   "@"                COL_MAGENTA "%s\n"                        COL_RES
-        COL_MAGENTA " .`    _  `.    "      COL_WHITE_B "distro: " COL_RES COL_MAGENTA "btw i use %s\n"              COL_RES
-        COL_MAGENTA " `.   (_)   `.  "      COL_WHITE_B "kernel: " COL_RES COL_MAGENTA "%s\n"                        COL_RES
-        COL_MAGENTA "   `.        /  "      COL_WHITE_B "uptime: " COL_RES COL_MAGENTA "%lih\n"                      COL_RES
-        COL_MAGENTA "  .`       .`   "      COL_WHITE_B "ram:    " COL_RES COL_MAGENTA "%lum / %lum / %lum / %lum\n" COL_RES
-        COL_MAGENTA " /       .`     "      COL_WHITE_B "swap:   " COL_RES COL_MAGENTA "%lum / %lum\n"               COL_RES
-        COL_MAGENTA " \\____.-`       "     COL_WHITE_B "procs:  " COL_RES COL_MAGENTA "%d\n"                        COL_RES
-        "\n",
-          username, uinfo.nodename, /* user and host name */
-          distroName,               /* name of your linux distro */
-          uinfo.release,            /* kernel release */
-          sinfo.uptime / 60 / 60,   /* uptime in hours */
-          sinfo.totalram / 1024 / 1024, sinfo.freeram / 1024 / 1024, sinfo.sharedram / 1024 / 1024, sinfo.bufferram / 1024 / 1024, /* ram info in Mb */
-          sinfo.totalswap / 1024 / 1024, sinfo.freeswap / 1024 / 1024, /* swap info in Mb */
-          sinfo.procs               /* number of current processes */
+            "\n"
+            COL_MAGENTA "   .-----.      " "%s" COL_WHITE   "@"        COL_MAGENTA "%s\n"                        COL_RES
+            COL_MAGENTA " .`    _  `.    "      COL_WHITE_B "distro: " COL_MAGENTA "btw i use %s\n"              COL_RES
+            COL_MAGENTA " `.   (_)   `.  "      COL_WHITE_B "kernel: " COL_MAGENTA "%s\n"                        COL_RES
+            COL_MAGENTA "   `.        /  "      COL_WHITE_B "uptime: " COL_MAGENTA "%lih\n"                      COL_RES
+            COL_MAGENTA "  .`       .`   "      COL_WHITE_B "ram:    " COL_MAGENTA "%lum / %lum / %lum / %lum\n" COL_RES
+            COL_MAGENTA " /       .`     "      COL_WHITE_B "swap:   " COL_MAGENTA "%lum / %lum\n"               COL_RES
+            COL_MAGENTA " \\____.-`       "     COL_WHITE_B "procs:  " COL_MAGENTA "%d\n"                        COL_RES
+            "\n",
+            username, uinfo.nodename, /* user and host name */
+            distroName,               /* name of your linux distro */
+            uinfo.release,            /* kernel release */
+            sinfo.uptime / 60 / 60,   /* uptime in hours */
+            sinfo.totalram / 1024 / 1024, sinfo.freeram / 1024 / 1024, sinfo.sharedram / 1024 / 1024, sinfo.bufferram / 1024 / 1024, /* ram info in Mb */
+            sinfo.totalswap / 1024 / 1024, sinfo.freeswap / 1024 / 1024, /* swap info in Mb */
+            sinfo.procs               /* number of current processes */
         );
 
     return 0;
