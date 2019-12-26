@@ -31,22 +31,23 @@ int main()
     struct sysinfo sinfo;
     struct passwd *pw = getpwuid(geteuid());
     char *username;
-    char *distroName = "BTW I use Ubuntu";
+    char *distroName = "Ubuntu";
 
     uname(&uinfo);                           /* initialize uname info structure */
     sysinfo(&sinfo);                         /* initialize system info (uptime, load average, ram, swap, number of processes) */
     username = pw -> pw_name;                /* get username */
 
     /* print all information */
+    /* Ubuntu logo bu https://gitlab.com/ViFun */
     fprintf(stdout,
             "\n"
-            COL_RED "           _   " "%s" COL_WHITE   "@"        COL_RED "%s\n"                        COL_RES /* user and host name */
-            COL_RED "       ---(_)  "      COL_WHITE "distro: " COL_RED "%s\n"                        COL_RES /* name of your linux distro */
-            COL_RED "   _/  " COL_WHITE "---" COL_RED "  \\  "      COL_WHITE "kernel: " COL_RED "%s\n"                        COL_RES /* kernel release */
-            COL_RED "  (_) " COL_WHITE "|   |" COL_RED "    "      COL_WHITE "uptime: " COL_RED "%lih %lim\n"                 COL_RES /* uptime */
-            COL_RED "    \\"  COL_WHITE "  ---" COL_RED " _/  "      COL_WHITE "ram:    " COL_RED "%lum / %lum / %lum / %lum\n" COL_RES /* ram info in Mb */
-            COL_RED "       ---(_)  "      COL_WHITE "swap:   " COL_RED "%lum / %lum\n"               COL_RES /* swap info in Mb */
-            COL_RED "               "     COL_WHITE "procs:  " COL_RED "%d\n"                        COL_RES /* number of current processes */
+            COL_RED "          _   "                           "%s" COL_WHITE_B "@"           COL_RED "%s\n"                        COL_RES /* user and host name */
+            COL_RED "      ---(_)  "                                COL_WHITE_B "distro: "    COL_RED "%s\n"                        COL_RES /* name of your linux distro */
+            COL_RED "  _/  " COL_WHITE_B "---"   COL_RED "  \\  "   COL_WHITE_B "kernel: "    COL_RED "%s\n"                        COL_RES /* kernel release */
+            COL_RED " (_) "  COL_WHITE_B "|   |" COL_RED "    "     COL_WHITE_B "uptime: "    COL_RED "%lih %lim\n"                 COL_RES /* uptime */
+            COL_RED "   \\"  COL_WHITE_B "  ---" COL_RED " _/  "    COL_WHITE_B "ram:    "    COL_RED "%lum / %lum / %lum / %lum\n" COL_RES /* ram info in Mb */
+            COL_RED "      ---(_)  "                                COL_WHITE_B "swap:   "    COL_RED "%lum / %lum\n"               COL_RES /* swap info in Mb */
+            COL_RED "              "                                COL_WHITE_B "procs:  "    COL_RED "%d\n"                        COL_RES /* number of current processes */
             "\n",
             username, uinfo.nodename,
             distroName,
