@@ -58,21 +58,21 @@ int main()
     /* print all information */
     fprintf(stdout,
             "\n"
-            COL_MAGENTA "   .-----.      " "%s" COL_WHITE   "@"        COL_MAGENTA "%s\n"                        COL_RES
-            COL_MAGENTA " .`    _  `.    "      COL_WHITE_B "distro: " COL_MAGENTA "btw i use %s\n"              COL_RES
-            COL_MAGENTA " `.   (_)   `.  "      COL_WHITE_B "kernel: " COL_MAGENTA "%s\n"                        COL_RES
-            COL_MAGENTA "   `.        /  "      COL_WHITE_B "uptime: " COL_MAGENTA "%lih %lim\n"                 COL_RES
-            COL_MAGENTA "  .`       .`   "      COL_WHITE_B "ram:    " COL_MAGENTA "%lum / %lum / %lum / %lum\n" COL_RES
-            COL_MAGENTA " /       .`     "      COL_WHITE_B "swap:   " COL_MAGENTA "%lum / %lum\n"               COL_RES
-            COL_MAGENTA " \\____.-`       "     COL_WHITE_B "procs:  " COL_MAGENTA "%d\n"                        COL_RES
+            COL_MAGENTA "   .-----.      " "%s" COL_WHITE   "@"        COL_MAGENTA "%s\n"                        COL_RES /* user and host name */
+            COL_MAGENTA " .`    _  `.    "      COL_WHITE_B "distro: " COL_MAGENTA "btw i use %s\n"              COL_RES /* name of your linux distro */
+            COL_MAGENTA " `.   (_)   `.  "      COL_WHITE_B "kernel: " COL_MAGENTA "%s\n"                        COL_RES /* kernel release */
+            COL_MAGENTA "   `.        /  "      COL_WHITE_B "uptime: " COL_MAGENTA "%lih %lim\n"                 COL_RES /* uptime */
+            COL_MAGENTA "  .`       .`   "      COL_WHITE_B "ram:    " COL_MAGENTA "%lum / %lum / %lum / %lum\n" COL_RES /* ram info in Mb */
+            COL_MAGENTA " /       .`     "      COL_WHITE_B "swap:   " COL_MAGENTA "%lum / %lum\n"               COL_RES /* swap info in Mb */
+            COL_MAGENTA " \\____.-`       "     COL_WHITE_B "procs:  " COL_MAGENTA "%d\n"                        COL_RES /* number of current processes */
             "\n",
-            username, uinfo.nodename, /* user and host name */
-            distroName,               /* name of your linux distro */
-            uinfo.release,            /* kernel release */
-            sinfo.uptime / 60 / 60, (sinfo.uptime / 60) - (sinfo.uptime / 60 / 60 * 60),   /* uptime */
-            sinfo.totalram / 1024 / 1024, sinfo.freeram / 1024 / 1024, sinfo.sharedram / 1024 / 1024, sinfo.bufferram / 1024 / 1024, /* ram info in Mb */
-            sinfo.totalswap / 1024 / 1024, sinfo.freeswap / 1024 / 1024, /* swap info in Mb */
-            sinfo.procs               /* number of current processes */
+            username, uinfo.nodename,
+            distroName,
+            uinfo.release,
+            sinfo.uptime / 60 / 60, (sinfo.uptime / 60) - (sinfo.uptime / 60 / 60 * 60),
+            sinfo.totalram / 1024 / 1024, sinfo.freeram / 1024 / 1024, sinfo.sharedram / 1024 / 1024, sinfo.bufferram / 1024 / 1024,
+            sinfo.totalswap / 1024 / 1024, sinfo.freeswap / 1024 / 1024,
+            sinfo.procs
         );
 
     return 0;
