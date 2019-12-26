@@ -69,7 +69,7 @@ int main()
             username, uinfo.nodename, /* user and host name */
             distroName,               /* name of your linux distro */
             uinfo.release,            /* kernel release */
-            sinfo.uptime / 60 / 60, (sinfo.uptime / 60) - (sinfo.uptime / 60 / 60 * 60),   /* uptime in hours */
+            sinfo.uptime / 60 / 60, (sinfo.uptime / 60) - (sinfo.uptime / 60 / 60 * 60),   /* uptime */
             sinfo.totalram / 1024 / 1024, sinfo.freeram / 1024 / 1024, sinfo.sharedram / 1024 / 1024, sinfo.bufferram / 1024 / 1024, /* ram info in Mb */
             sinfo.totalswap / 1024 / 1024, sinfo.freeswap / 1024 / 1024, /* swap info in Mb */
             sinfo.procs               /* number of current processes */
