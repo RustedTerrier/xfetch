@@ -13,6 +13,7 @@
 #define COL_MAGENTA      "\x1b[35m"
 #define COL_CYAN         "\x1b[36m"
 #define COL_WHITE        "\x1b[37m"
+
 #define COL_RES          "\x1b[0m"
 
 #define COL_RED_B        "\x1b[31;1m"
@@ -30,26 +31,7 @@ int main()
     struct sysinfo sinfo;
     struct passwd *pw = getpwuid(geteuid());
     char *username;
-    FILE *fp = fopen("/etc/os-release", "r");
-    if (fp == NULL)
-    {
-        perror(COL_RED "Error: cannot read /etc/os-release." COL_RES);
-        exit(1);
-    }
-    char distroName[64];
-
-    /* get your distro name */
-    fgets(distroName, sizeof(distroName), fp);
-    for (int i = 0;i < (sizeof(distroName) - 5);i++)
-    {
-        if (distroName[i + 5] == '\n') distroName[i + 5] = '\0';
-        else if (distroName[i + 5] == '"') distroName[i + 5] = ' ';
-        distroName[i] = distroName[i + 5];
-    }
-    fclose(fp);
-    if (distroName[0] == ' ')
-        for (int i = 0;i < sizeof(distroName) - 1;i++)
-            distroName[i] = distroName[i + 1];
+    char *distroName = "Example Linux";
 
     uname(&uinfo);                           /* initialize uname info structure */
     sysinfo(&sinfo);                         /* initialize system info (uptime, load average, ram, swap, number of processes) */
@@ -58,13 +40,13 @@ int main()
     /* print all information */
     fprintf(stdout,
             "\n"
-            COL_MAGENTA "   .-----.      " "%s" COL_WHITE   "@"        COL_MAGENTA "%s\n"                        COL_RES /* user and host name */
-            COL_MAGENTA " .`    _  `.    "      COL_WHITE_B "distro: " COL_MAGENTA "btw i use %s\n"              COL_RES /* name of your linux distro */
-            COL_MAGENTA " `.   (_)   `.  "      COL_WHITE_B "kernel: " COL_MAGENTA "%s\n"                        COL_RES /* kernel release */
-            COL_MAGENTA "   `.        /  "      COL_WHITE_B "uptime: " COL_MAGENTA "%lih %lim\n"                 COL_RES /* uptime */
-            COL_MAGENTA "  .`       .`   "      COL_WHITE_B "ram:    " COL_MAGENTA "%lum / %lum / %lum / %lum\n" COL_RES /* ram info in Mb */
-            COL_MAGENTA " /       .`     "      COL_WHITE_B "swap:   " COL_MAGENTA "%lum / %lum\n"               COL_RES /* swap info in Mb */
-            COL_MAGENTA " \\____.-`       "     COL_WHITE_B "procs:  " COL_MAGENTA "%d\n"                        COL_RES /* number of current processes */
+            COL_CYAN "+------------+ " "%s" COL_WHITE   "@"        COL_CYAN "%s\n"                        COL_RES /* user and host name */
+            COL_CYAN "|Example logo| "      COL_WHITE_B "distro: " COL_CYAN "%s\n"                        COL_RES /* name of your linux distro */
+            COL_CYAN "|Example logo| "      COL_WHITE_B "kernel: " COL_CYAN "%s\n"                        COL_RES /* kernel release */
+            COL_CYAN "|Example logo| "      COL_WHITE_B "uptime: " COL_CYAN "%lih %lim\n"                 COL_RES /* uptime */
+            COL_CYAN "|Example logo| "      COL_WHITE_B "ram:    " COL_CYAN "%lum / %lum / %lum / %lum\n" COL_RES /* ram info in Mb */
+            COL_CYAN "|Example logo| "      COL_WHITE_B "swap:   " COL_CYAN "%lum / %lum\n"               COL_RES /* swap info in Mb */
+            COL_CYAN "+------------+ "      COL_WHITE_B "procs:  " COL_CYAN "%d\n"                        COL_RES /* number of current processes */
             "\n",
             username, uinfo.nodename,
             distroName,

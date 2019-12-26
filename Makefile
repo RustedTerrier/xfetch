@@ -1,9 +1,21 @@
 PREFIX = /usr/local
 
-all: build
+all:
+	@echo "Run \`make build-gentoo\` to build bitfetch-gentoo.c"
+	@echo "Run \`make build-example\` to build bitfetch-example.c"
+	@echo "Run \`make build-all\` to build all bitfetch-*.c files"
+	@echo ""
+	@echo "Use bitfetch-example.c to create a bitfetch's version for another linux distro."
 
-build:
-	@gcc -O3 bitfetch.c -o bitfetch
+build-gentoo:
+	@gcc -O3 bitfetch-gentoo.c -o bitfetch-gentoo
+	@echo "gcc bitfetch-gentoo.c -> bitfetch-gentoo"
+
+build-example:
+	@gcc -O3 bitfetch-example.c -o bitfetch-example
+	@echo "gcc bitfetch-example.c -> bitfetch-example"
+
+build-all: build-gentoo build-example
 
 .PHONY: install
 install: all
@@ -15,4 +27,4 @@ uninstall:
 
 .PHONY: clean
 clean:
-	@rm bitfetch -v
+	@rm bitfetch-gentoo bitfetch-example -v || true
