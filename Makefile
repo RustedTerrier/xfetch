@@ -17,9 +17,13 @@ build-example:
 
 build-all: build-gentoo build-example
 
-.PHONY: install
-install: all
-	@cp bitfetch ${PREFIX}/bin/bitfetch -v
+.PHONY: install-gentoo
+install-gentoo: build-gentoo
+	@cp bitfetch-gentoo ${PREFIX}/bin/bitfetch -v
+
+.PHONY: install-example
+install-gentoo: build-example
+	@cp bitfetch-example ${PREFIX}/bin/bitfetch -v
 
 .PHONY: uninstall
 uninstall:
