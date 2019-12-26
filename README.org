@@ -1,0 +1,14 @@
+* bitfetch - simple fetch written in C
+
+** Build and install
+#+BEGIN_SRC shell
+  make # show make targets
+  make build-all # build all versions of bitfetch
+  make install-gentoo # install gentoo version
+#+END_SRC
+
+** Authors
+   - Me (https://gitlab.com/bit9tream)
+     Gentoo logo(from ufetch)
+   - Funny (https://gitlab.com/ViFun)
+     Ubuntu logo(from ufetch)
