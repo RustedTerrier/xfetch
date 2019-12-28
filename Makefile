@@ -1,12 +1,18 @@
 PREFIX = /usr/local
 
 all:
-	@echo "Run \`make build-gentoo\` to build bitfetch-gentoo.c"
-	@echo "Run \`make build-ubuntu\` to build bitfetch-ubuntu.c"
-	@echo "Run \`make build-crux\` to build bitfetch-crux.c"
-	@echo "Run \`make build-void\` to build bitfetch-void.c"
+	@echo "Run \`make build-gentoo\`  to build bitfetch-gentoo.c"
+	@echo "Run \`make build-ubuntu\`  to build bitfetch-ubuntu.c"
+	@echo "Run \`make build-crux\`    to build bitfetch-crux.c"
+	@echo "Run \`make build-void\`    to build bitfetch-void.c"
 	@echo "Run \`make build-example\` to build bitfetch-example.c"
-	@echo "Run \`make build-all\` to build all bitfetch-*.c files"
+	@echo "Run \`make build-all\`     to build all bitfetch-*.c files"
+	@echo ""
+	@echo "Run \`make install-gentoo\`  to install bitfetch-gentoo"
+	@echo "Run \`make install-ubuntu\`  to install bitfetch-ubuntu"
+	@echo "Run \`make install-crux\`    to install bitfetch-crux"
+	@echo "Run \`make install-void\`    to install bitfetch-void"
+	@echo "Run \`make install-example\` to install bitfetch-example"
 	@echo ""
 	@echo "Use bitfetch-example.c to create a bitfetch's version for another linux distro."
 
