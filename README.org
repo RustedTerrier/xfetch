@@ -8,7 +8,7 @@
 #+END_SRC
 
 ** Authors
-*** [[https://gitlab.com/bit9tream][Me]] -- Gentoo, CRUX, Void
-*** [[https://gitlab.com/ViFun][Funny]] -- Ubuntu
+  - [[https://gitlab.com/bit9tream][Me]] -- Gentoo, CRUX, Void
+  - [[https://gitlab.com/ViFun][Funny]] -- Ubuntu
 ** Logo sources
-*** [[https://gitlab.com/jschx/ufetch][ufetch]]
+  - [[https://gitlab.com/jschx/ufetch][ufetch]]
