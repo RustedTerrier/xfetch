@@ -1,4 +1,5 @@
 PREFIX = /usr/local
+CC = gcc
 
 all:
 	@echo "Run \`make build-gentoo\`  to build bitfetch-gentoo.c"
@@ -17,24 +18,24 @@ all:
 	@echo "Use bitfetch-example.c to create a bitfetch's version for another linux distro."
 
 build-void:
-	@gcc -O3   bitfetch-void.c -o bitfetch-void
-	@echo "gcc bitfetch-void.c -> bitfetch-void"
+	@${CC} -O3   bitfetch-void.c -o bitfetch-void
+	@echo "${CC} bitfetch-void.c -> bitfetch-void"
 
 build-crux:
-	@gcc -O3   bitfetch-crux.c -o bitfetch-crux
-	@echo "gcc bitfetch-crux.c -> bitfetch-crux"
+	@${CC} -O3   bitfetch-crux.c -o bitfetch-crux
+	@echo "${CC} bitfetch-crux.c -> bitfetch-crux"
 
 build-ubuntu:
-	@gcc -O3   bitfetch-ubuntu.c -o bitfetch-ubuntu
-	@echo "gcc bitfetch-ubuntu.c -> bitfetch-ubuntu"
+	@${CC} -O3   bitfetch-ubuntu.c -o bitfetch-ubuntu
+	@echo "${CC} bitfetch-ubuntu.c -> bitfetch-ubuntu"
 
 build-gentoo:
-	@gcc -O3   bitfetch-gentoo.c -o bitfetch-gentoo
-	@echo "gcc bitfetch-gentoo.c -> bitfetch-gentoo"
+	@${CC} -O3   bitfetch-gentoo.c -o bitfetch-gentoo
+	@echo "${CC} bitfetch-gentoo.c -> bitfetch-gentoo"
 
 build-example:
-	@gcc -O3   bitfetch-example.c -o bitfetch-example
-	@echo "gcc bitfetch-example.c -> bitfetch-example"
+	@${CC} -O3   bitfetch-example.c -o bitfetch-example
+	@echo "${CC} bitfetch-example.c -> bitfetch-example"
 
 build-all: build-gentoo build-example bitfetch-ubuntu build-void build-example
 
