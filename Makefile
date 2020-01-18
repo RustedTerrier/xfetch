@@ -1,7 +1,7 @@
 PREFIX = /usr/local
 CC = gcc
 
-all:
+help:
 	@echo "Run \`make build-gentoo\`  to build bitfetch-gentoo.c"
 	@echo "Run \`make build-ubuntu\`  to build bitfetch-ubuntu.c"
 	@echo "Run \`make build-crux\`    to build bitfetch-crux.c"
