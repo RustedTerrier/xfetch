@@ -37,7 +37,7 @@ build-example:
 	@${CC} -O3   bitfetch-example.c -o bitfetch-example
 	@echo "${CC} bitfetch-example.c -> bitfetch-example"
 
-build-all: build-gentoo build-example build-ubuntu build-void build-example
+build-all: build-gentoo build-example build-ubuntu build-void build-crux
 
 .PHONY: install-void
 install-void: build-void
