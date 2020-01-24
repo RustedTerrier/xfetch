@@ -65,5 +65,5 @@ uninstall:
 
 .PHONY: clean
 clean:
-	@rm bitfetch-ubuntu bitfetch-gentoo bitfetch-example bitfetch-crux -v || true
+	@rm bitfetch-ubuntu bitfetch-gentoo bitfetch-example bitfetch-crux bitfetch-void -v || true
 
