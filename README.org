@@ -7,6 +7,9 @@
   make install-gentoo # install gentoo version
 #+END_SRC
 
+* Screenshot
+[[./screenshot.png]]
+
 ** Authors
   - [[https://gitlab.com/bit9tream][Me]] -- Gentoo, CRUX, Void
   - [[https://gitlab.com/ViFun][Funny]] -- Ubuntu
