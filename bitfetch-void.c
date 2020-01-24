@@ -42,13 +42,13 @@ int main()
     /* print all information */
     fprintf(stdout,
             "\n"
-            COL_GREEN "      _______      "   "%s" COL_WHITE   "@"        COL_GREEN "%s\n"                        COL_RES /* user and host name */
-            COL_GREEN "      \\_____ `-    "       COL_WHITE_B "distro: " COL_GREEN "%s\n"                        COL_RES /* name of your linux distro */
-            COL_GREEN "   /\\   ___ `- \\   "      COL_WHITE_B "kernel: " COL_GREEN "%s\n"                        COL_RES /* kernel release */
-            COL_GREEN "  | |  /   \\  | |  "       COL_WHITE_B "uptime: " COL_GREEN "%lih %lim\n"                 COL_RES /* uptime */
-            COL_GREEN "  | |  \\___/  | |  "       COL_WHITE_B "ram:    " COL_GREEN "%lum / %lum / %lum / %lum\n" COL_RES /* ram info in Mb */
-            COL_GREEN "   \\ `-_____  \\/   "      COL_WHITE_B "swap:   " COL_GREEN "%lum / %lum\n"               COL_RES /* swap info in Mb */
-            COL_GREEN "    `-______\\      "       COL_WHITE_B "procs:  " COL_GREEN "%d\n"                        COL_RES /* number of current processes */
+            COL_GREEN "      _______      "   "%s" COL_RES "@"        COL_GREEN "%s\n"                        COL_RES /* user and host name */
+            COL_GREEN "      \\_____ `-    "       COL_RES "distro: " COL_GREEN "%s\n"                        COL_RES /* name of your linux distro */
+            COL_GREEN "   /\\   ___ `- \\   "      COL_RES "kernel: " COL_GREEN "%s\n"                        COL_RES /* kernel release */
+            COL_GREEN "  | |  /   \\  | |  "       COL_RES "uptime: " COL_GREEN "%lih %lim\n"                 COL_RES /* uptime */
+            COL_GREEN "  | |  \\___/  | |  "       COL_RES "ram:    " COL_GREEN "%lum / %lum / %lum / %lum\n" COL_RES /* ram info in Mb */
+            COL_GREEN "   \\ `-_____  \\/   "      COL_RES "swap:   " COL_GREEN "%lum / %lum\n"               COL_RES /* swap info in Mb */
+            COL_GREEN "    `-______\\      "       COL_RES "procs:  " COL_GREEN "%d\n"                        COL_RES /* number of current processes */
             "\n",
             username, uinfo.nodename,
             distroName,

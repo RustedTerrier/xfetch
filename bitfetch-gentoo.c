@@ -42,13 +42,13 @@ int main()
     /* print all information */
     fprintf(stdout,
             "\n"
-            COL_MAGENTA "   .-----.      " "%s" COL_MAGENTA   "@"        COL_MAGENTA "%s\n"                        COL_RES /* user and host name */
-            COL_MAGENTA " .`    _  `.    "      COL_MAGENTA_B "distro: " COL_MAGENTA "%s\n"                        COL_RES /* name of your linux distro */
-            COL_MAGENTA " `.   (_)   `.  "      COL_MAGENTA_B "kernel: " COL_MAGENTA "%s\n"                        COL_RES /* kernel release */
-            COL_MAGENTA "   `.        /  "      COL_MAGENTA_B "uptime: " COL_MAGENTA "%lih %lim\n"                 COL_RES /* uptime */
-            COL_MAGENTA "  .`       .`   "      COL_MAGENTA_B "ram:    " COL_MAGENTA "%lum / %lum / %lum / %lum\n" COL_RES /* ram info in Mb */
-            COL_MAGENTA " /       .`     "      COL_MAGENTA_B "swap:   " COL_MAGENTA "%lum / %lum\n"               COL_RES /* swap info in Mb */
-            COL_MAGENTA " \\____.-`       "     COL_MAGENTA_B "procs:  " COL_MAGENTA "%d\n"                        COL_RES /* number of current processes */
+            COL_MAGENTA "   .-----.      " "%s" COL_RES "@"        COL_MAGENTA "%s\n"                        COL_RES /* user and host name */
+            COL_MAGENTA " .`    _  `.    "      COL_RES "distro: " COL_MAGENTA "%s\n"                        COL_RES /* name of your linux distro */
+            COL_MAGENTA " `.   (_)   `.  "      COL_RES "kernel: " COL_MAGENTA "%s\n"                        COL_RES /* kernel release */
+            COL_MAGENTA "   `.        /  "      COL_RES "uptime: " COL_MAGENTA "%lih %lim\n"                 COL_RES /* uptime */
+            COL_MAGENTA "  .`       .`   "      COL_RES "ram:    " COL_MAGENTA "%lum / %lum / %lum / %lum\n" COL_RES /* ram info in Mb */
+            COL_MAGENTA " /       .`     "      COL_RES "swap:   " COL_MAGENTA "%lum / %lum\n"               COL_RES /* swap info in Mb */
+            COL_MAGENTA " \\____.-`       "     COL_RES "procs:  " COL_MAGENTA "%d\n"                        COL_RES /* number of current processes */
             "\n",
             username, uinfo.nodename,
             distroName,
