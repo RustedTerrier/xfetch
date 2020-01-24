@@ -6,6 +6,7 @@
 #include <pwd.h>                /* geteuid() */
 
 /* for colored output */
+#define COL_BLACK        "\x1b[30m"
 #define COL_RED          "\x1b[31m"
 #define COL_GREEN        "\x1b[32m"
 #define COL_YELLOW       "\x1b[33m"
@@ -16,6 +17,7 @@
 
 #define COL_RES          "\x1b[0m"
 
+#define COL_BLACK_B      "\x1b[30;1m"
 #define COL_RED_B        "\x1b[31;1m"
 #define COL_GREEN_B      "\x1b[32;1m"
 #define COL_YELLOW_B     "\x1b[33;1m"
@@ -40,13 +42,13 @@ int main()
     /* print all information */
     fprintf(stdout,
             "\n"
-            COL_MAGENTA "   .-----.      " "%s" COL_WHITE   "@"        COL_MAGENTA "%s\n"                        COL_RES /* user and host name */
-            COL_MAGENTA " .`    _  `.    "      COL_WHITE_B "distro: " COL_MAGENTA "%s\n"                        COL_RES /* name of your linux distro */
-            COL_MAGENTA " `.   (_)   `.  "      COL_WHITE_B "kernel: " COL_MAGENTA "%s\n"                        COL_RES /* kernel release */
-            COL_MAGENTA "   `.        /  "      COL_WHITE_B "uptime: " COL_MAGENTA "%lih %lim\n"                 COL_RES /* uptime */
-            COL_MAGENTA "  .`       .`   "      COL_WHITE_B "ram:    " COL_MAGENTA "%lum / %lum / %lum / %lum\n" COL_RES /* ram info in Mb */
-            COL_MAGENTA " /       .`     "      COL_WHITE_B "swap:   " COL_MAGENTA "%lum / %lum\n"               COL_RES /* swap info in Mb */
-            COL_MAGENTA " \\____.-`       "     COL_WHITE_B "procs:  " COL_MAGENTA "%d\n"                        COL_RES /* number of current processes */
+            COL_MAGENTA "   .-----.      " "%s" COL_MAGENTA   "@"        COL_MAGENTA "%s\n"                        COL_RES /* user and host name */
+            COL_MAGENTA " .`    _  `.    "      COL_MAGENTA_B "distro: " COL_MAGENTA "%s\n"                        COL_RES /* name of your linux distro */
+            COL_MAGENTA " `.   (_)   `.  "      COL_MAGENTA_B "kernel: " COL_MAGENTA "%s\n"                        COL_RES /* kernel release */
+            COL_MAGENTA "   `.        /  "      COL_MAGENTA_B "uptime: " COL_MAGENTA "%lih %lim\n"                 COL_RES /* uptime */
+            COL_MAGENTA "  .`       .`   "      COL_MAGENTA_B "ram:    " COL_MAGENTA "%lum / %lum / %lum / %lum\n" COL_RES /* ram info in Mb */
+            COL_MAGENTA " /       .`     "      COL_MAGENTA_B "swap:   " COL_MAGENTA "%lum / %lum\n"               COL_RES /* swap info in Mb */
+            COL_MAGENTA " \\____.-`       "     COL_MAGENTA_B "procs:  " COL_MAGENTA "%d\n"                        COL_RES /* number of current processes */
             "\n",
             username, uinfo.nodename,
             distroName,

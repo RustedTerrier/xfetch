@@ -6,6 +6,7 @@
 #include <pwd.h>                /* geteuid() */
 
 /* for colored output */
+#define COL_BLACK        "\x1b[30m"
 #define COL_RED          "\x1b[31m"
 #define COL_GREEN        "\x1b[32m"
 #define COL_YELLOW       "\x1b[33m"
@@ -16,6 +17,7 @@
 
 #define COL_RES          "\x1b[0m"
 
+#define COL_BLACK_B      "\x1b[30;1m"
 #define COL_RED_B        "\x1b[31;1m"
 #define COL_GREEN_B      "\x1b[32;1m"
 #define COL_YELLOW_B     "\x1b[33;1m"
