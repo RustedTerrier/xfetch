@@ -6,6 +6,7 @@ help:
 	@echo "Run \`make build-ubuntu\`  to build bitfetch-ubuntu.c"
 	@echo "Run \`make build-crux\`    to build bitfetch-crux.c"
 	@echo "Run \`make build-void\`    to build bitfetch-void.c"
+	@echo "Run \`make build-arch\`    to build bitfetch-arch.c"
 	@echo "Run \`make build-example\` to build bitfetch-example.c"
 	@echo "Run \`make build-all\`     to build all bitfetch-*.c files"
 	@echo ""
@@ -13,9 +14,14 @@ help:
 	@echo "Run \`make install-ubuntu\`  to install bitfetch-ubuntu"
 	@echo "Run \`make install-crux\`    to install bitfetch-crux"
 	@echo "Run \`make install-void\`    to install bitfetch-void"
+	@echo "Run \`make install-arch\`    to install bitfetch-arch"
 	@echo "Run \`make install-example\` to install bitfetch-example"
 	@echo ""
 	@echo "Use bitfetch-example.c to create a bitfetch's version for another linux distro."
+
+build-arch:
+	@${CC} -O3   bitfetch-arch.c -o bitfetch-arch
+	@echo "${CC} bitfetch-arch.c -> bitfetch-arch"
 
 build-void:
 	@${CC} -O3   bitfetch-void.c -o bitfetch-void
@@ -37,7 +43,11 @@ build-example:
 	@${CC} -O3   bitfetch-example.c -o bitfetch-example
 	@echo "${CC} bitfetch-example.c -> bitfetch-example"
 
-build-all: build-gentoo build-example build-ubuntu build-void build-crux
+build-all: build-gentoo build-example build-ubuntu build-void build-crux build-arch
+
+.PHONY: install-arch
+install-arch: build-arch
+	@cp bitfetch-arch ${PREFIX}/bin/bitfetch -v
 
 .PHONY: install-void
 install-void: build-void
@@ -65,5 +75,5 @@ uninstall:
 
 .PHONY: clean
 clean:
-	@rm bitfetch-ubuntu bitfetch-gentoo bitfetch-example bitfetch-crux bitfetch-void -v || true
+	@rm bitfetch-ubuntu bitfetch-gentoo bitfetch-example bitfetch-crux bitfetch-void bitfetch-arch -v || true
 
