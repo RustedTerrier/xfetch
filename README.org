@@ -2,9 +2,12 @@
 
 ** Build and install
 #+BEGIN_SRC shell
-  make # show make targets
-  make build-all # build all versions of bitfetch
-  make install-gentoo # install gentoo version
+  $ make # show make targets
+  $ make build-all # build all versions of bitfetch
+  $ make install-gentoo # install gentoo version
+
+  $ make CC=clang build-all # build all bitfetch versions with clang
+  $ make PREFIX=$HOME install-void # install bitfetch to /home/user/bin/bitfetch
 #+END_SRC
 
 ** Screenshots
