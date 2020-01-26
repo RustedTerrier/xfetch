@@ -44,10 +44,10 @@ int main()
             "\n"
             COL_CYAN "       /\\        " "%s" COL_RES "@"        COL_CYAN "%s\n"                        COL_RES /* user and host name */
             COL_CYAN "      /  \\       "      COL_RES "distro: " COL_CYAN "%s\n"                        COL_RES /* name of your linux distro */
-            COL_CYAN "     /\\   \\      "      COL_RES "kernel: " COL_CYAN "%s\n"                        COL_RES /* kernel release */
+            COL_CYAN "     /\\   \\      "     COL_RES "kernel: " COL_CYAN "%s\n"                        COL_RES /* kernel release */
             COL_CYAN "    /  __  \\     "      COL_RES "uptime: " COL_CYAN "%lih %lim\n"                 COL_RES /* uptime */
             COL_CYAN "   /  (  )  \\    "      COL_RES "ram:    " COL_CYAN "%lum / %lum / %lum / %lum\n" COL_RES /* ram info in Mb */
-            COL_CYAN "  / __|  |__\\\\   "      COL_RES "swap:   " COL_CYAN "%lum / %lum\n"               COL_RES /* swap info in Mb */
+            COL_CYAN "  / __|  |__\\\\   "     COL_RES "swap:   " COL_CYAN "%lum / %lum\n"               COL_RES /* swap info in Mb */
             COL_CYAN " /.`        `.\\  "      COL_RES "procs:  " COL_CYAN "%d\n"                        COL_RES /* number of current processes */
             "\n",
             username, uinfo.nodename,
