@@ -1,5 +1,4 @@
 #include <stdio.h>              /* printf(), perror() */
-#include <stdlib.h>             /* getloadavg() */
 #include <sys/utsname.h>        /* uname() */
 #include <sys/sysinfo.h>        /* sysinfo() */
 #include <unistd.h>             /* getwpuid() */
@@ -32,11 +31,9 @@ int main()
     struct passwd *pw = getpwuid(geteuid());
     char *username;
     char *distroName = "Ubuntu";
-    double loads[3] = {0};
 
     uname(&uinfo);                           /* initialize uname info structure */
     sysinfo(&sinfo);                         /* initialize system info (uptime, load average, ram, swap, number of processes) */
-    getloadavg(loads, 3);                    /* get load average */
     username = pw -> pw_name;                /* get username */
 
     /* print all information */
@@ -58,8 +55,7 @@ int main()
             sinfo.uptime / 60 / 60, (sinfo.uptime / 60) - (sinfo.uptime / 60 / 60 * 60),
             sinfo.totalram / 1024 / 1024, sinfo.freeram / 1024 / 1024, sinfo.sharedram / 1024 / 1024, sinfo.bufferram / 1024 / 1024,
             sinfo.totalswap / 1024 / 1024, sinfo.freeswap / 1024 / 1024,
-            sinfo.procs,
-            loads[0], loads[1], loads[2]
+            sinfo.procs
         );
 
     return 0;

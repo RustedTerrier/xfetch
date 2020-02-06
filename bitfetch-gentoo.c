@@ -1,5 +1,4 @@
 #include <stdio.h>              /* printf(), perror() */
-#include <stdlib.h>             /* getloadavg() */
 #include <sys/utsname.h>        /* uname() */
 #include <sys/sysinfo.h>        /* sysinfo() */
 #include <unistd.h>             /* getwpuid() */
@@ -34,11 +33,9 @@ int main()
     struct passwd *pw = getpwuid(geteuid());
     char *username;
     char *distroName = "Gentoo Linux";
-    double loads[3] = {0};
 
     uname(&uinfo);                           /* initialize uname info structure */
     sysinfo(&sinfo);                         /* initialize system info (uptime, load average, ram, swap, number of processes) */
-    getloadavg(loads, 3);                    /* get load average */
     username = pw -> pw_name;                /* get username */
 
     /* print all information */
@@ -51,7 +48,6 @@ int main()
             COL_MAGENTA "  .`       .`   "      COL_RES "ram:    " COL_MAGENTA "%lum / %lum / %lum / %lum\n" COL_RES /* ram info in Mb */
             COL_MAGENTA " /       .`     "      COL_RES "swap:   " COL_MAGENTA "%lum / %lum\n"               COL_RES /* swap info in Mb */
             COL_MAGENTA " \\____.-`       "     COL_RES "procs:  " COL_MAGENTA "%d\n"                        COL_RES /* number of current processes */
-                        "                "      COL_RES "load:   " COL_MAGENTA "%.2f %.2f %.2f"              COL_RES /* load agerage: 1min 5min 15min */
             "\n",
             username, uinfo.nodename,
             distroName,
@@ -59,8 +55,7 @@ int main()
             sinfo.uptime / 60 / 60, (sinfo.uptime / 60) - (sinfo.uptime / 60 / 60 * 60),
             sinfo.totalram / 1024 / 1024, sinfo.freeram / 1024 / 1024, sinfo.sharedram / 1024 / 1024, sinfo.bufferram / 1024 / 1024,
             sinfo.totalswap / 1024 / 1024, sinfo.freeswap / 1024 / 1024,
-            sinfo.procs,
-            loads[0], loads[1], loads[2]
+            sinfo.procs
         );
 
     return 0;
