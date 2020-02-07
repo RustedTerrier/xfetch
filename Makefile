@@ -1,84 +1,35 @@
-PREFIX = /usr/local
 CC = gcc
+CFLAGS = -O3
+PREFIX = /usr/local/
 
-help:
-	@echo "Run \`make build-gentoo\`  to build bitfetch-gentoo.c"
-	@echo "Run \`make build-ubuntu\`  to build bitfetch-ubuntu.c"
-	@echo "Run \`make build-crux\`    to build bitfetch-crux.c"
-	@echo "Run \`make build-void\`    to build bitfetch-void.c"
-	@echo "Run \`make build-arch\`    to build bitfetch-arch.c"
-	@echo "Run \`make build-example\` to build bitfetch-example.c"
-	@echo "Run \`make build-all\`     to build all bitfetch-*.c files"
-	@echo ""
-	@echo "Run \`make install-gentoo\`  to install bitfetch-gentoo"
-	@echo "Run \`make install-ubuntu\`  to install bitfetch-ubuntu"
-	@echo "Run \`make install-crux\`    to install bitfetch-crux"
-	@echo "Run \`make install-void\`    to install bitfetch-void"
-	@echo "Run \`make install-arch\`    to install bitfetch-arch"
-	@echo "Run \`make install-example\` to install bitfetch-example"
-	@echo ""
-	@echo "Use bitfetch-example.c to create a bitfetch's version for another linux distro."
+bitfetch-gentoo:
+	@${CC} bitfetch.c -DBITFETCH_GENTOO ${CFLAGS} -o bitfetch
+	@echo "bitfetch.c + distros/gentoo.h -> bitfetch"
 
-var_info:
-	@echo "CC: ${CC}"
-	@echo "PREFIX: ${PREFIX}"
-	@echo ""
+bitfetch-arch:
+	@${CC} bitfetch.c -DBITFETCH_ARCH ${CFLAGS} -o bitfetch
+	@echo "bitfetch.c + distros/arch.h -> bitfetch"
 
-build-arch: var_info
-	@${CC} -O3   bitfetch-arch.c -o bitfetch-arch
-	@echo       "bitfetch-arch.c -> bitfetch-arch"
+bitfetch-ubuntu:
+	@${CC} bitfetch.c -DBITFETCH_UBUNTU ${CFLAGS} -o bitfetch
+	@echo "bitfetch.c + distros/ubuntu.h -> bitfetch"
 
-build-void: var_info
-	@${CC} -O3   bitfetch-void.c -o bitfetch-void
-	@echo       "bitfetch-void.c -> bitfetch-void"
+bitfetch-crux:
+	@${CC} bitfetch.c -DBITFETCH_CRUX ${CFLAGS} -o bitfetch
+	@echo "bitfetch.c + distros/crux.h -> bitfetch"
 
-build-crux: var_info
-	@${CC} -O3   bitfetch-crux.c -o bitfetch-crux
-	@echo       "bitfetch-crux.c -> bitfetch-crux"
+bitfetch-linux:
+	@${CC} bitfetch.c -DBITFETCH_LINUX ${CFLAGS} -o bitfetch
+	@echo "bitfetch.c + distros/linux.h -> bitfetch"
 
-build-ubuntu: var_info
-	@${CC} -O3   bitfetch-ubuntu.c -o bitfetch-ubuntu
-	@echo       "bitfetch-ubuntu.c -> bitfetch-ubuntu"
+bitfetch-void:
+	@${CC} bitfetch.c -DBITFETCH_VOID ${CFLAGS} -o bitfetch
+	@echo "bitfetch.c + distros/void.h -> bitfetch"
 
-build-gentoo: var_info
-	@${CC} -O3   bitfetch-gentoo.c -o bitfetch-gentoo
-	@echo       "bitfetch-gentoo.c -> bitfetch-gentoo"
+install:
+	@cp bitfetch ${PREFIX}/bin/bitfetch
+	@mkdir ${PREFIX}/bin 2> /dev/null || true
+	@echo "bitfetch -> ${PREFIX}/bin/bitfetch"
 
-build-example: var_info
-	@${CC} -O3   bitfetch-example.c -o bitfetch-example
-	@echo       "bitfetch-example.c -> bitfetch-example"
-
-build-all: var_info build-gentoo build-example build-ubuntu build-void build-crux build-arch
-
-.PHONY: install-arch
-install-arch: build-arch
-	@cp bitfetch-arch ${PREFIX}/bin/bitfetch -v
-
-.PHONY: install-void
-install-void: build-void
-	@cp bitfetch-void ${PREFIX}/bin/bitfetch -v
-
-.PHONY: install-crux
-install-crux: build-crux
-	@cp bitfetch-crux ${PREFIX}/bin/bitfetch -v
-
-.PHONY: install-ubuntu
-install-ubuntu: build-ubuntu
-	@cp bitfetch-ubuntu ${PREFIX}/bin/bitfetch -v
-
-.PHONY: install-gentoo
-install-gentoo: build-gentoo
-	@cp bitfetch-gentoo ${PREFIX}/bin/bitfetch -v
-
-.PHONY: install-example
-install-example: build-example
-	@cp bitfetch-example ${PREFIX}/bin/bitfetch -v
-
-.PHONY: uninstall
-uninstall:
-	@rm ${PREFIX}/bin/bitfetch -v
-
-.PHONY: clean
 clean:
-	@rm bitfetch-ubuntu bitfetch-gentoo bitfetch-example bitfetch-crux bitfetch-void bitfetch-arch -v || true
-
+	rm bitfetch
