@@ -16,8 +16,9 @@
 #elif BITFETCH_VOID
 #include "distros/void.h"
 #else
-#include "distros/linux.h"
+#include "distros/generic.h"
 #endif
+
 
 int main()
 {
