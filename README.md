@@ -6,5 +6,7 @@ $ make CC=clang bitfetch-gentoo # build bitfetch with gentoo-logo using clang as
 $ sudo make install             # install bitfetch to /usr/local/bin (warning: you need to build it before install)
 ```
 
+![screenshot](./bitfetch.png)
+
 # Logo sources:
 + [ufetch](https://gitlab.com/jschx/ufetch)
