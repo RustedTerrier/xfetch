@@ -5,6 +5,7 @@
 
 #define DISTRONAME "Gentoo Linux"
 #define COL_DIST   COL_MAGENTA
+#define COL_DIST_B COL_MAGENTA_B
 
 #define LOGO_1L "   .-----.      "
 #define LOGO_2L " .`    _  `.    "

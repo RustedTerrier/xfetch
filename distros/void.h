@@ -5,6 +5,7 @@
 
 #define DISTRONAME "Void Linux"
 #define COL_DIST   COL_GREEN
+#define COL_DIST_B COL_GREEN_B
 
 #define LOGO_1L "      _______      "
 #define LOGO_2L "      \\_____ `-    "

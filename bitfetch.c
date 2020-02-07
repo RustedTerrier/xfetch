@@ -33,15 +33,15 @@ int main()
     /* print all information */
     fprintf(stdout,
             "\n"
-            COL_DIST  LOGO_1L "%s" COL_RES "@"         COL_DIST "%s\n"                        COL_RES
-            COL_DIST  LOGO_2L      COL_RES "distro:  " COL_DIST DISTRONAME"\n"                COL_RES
-            COL_DIST  LOGO_3L      COL_RES "kernel:  " COL_DIST "%s\n"                        COL_RES
-            COL_DIST  LOGO_4L      COL_RES "uptime:  " COL_DIST "%lih %lim\n"                 COL_RES
-            COL_DIST  LOGO_5L      COL_RES "loadavg: " COL_DIST "%.2f %.2f %.2f\n"            COL_RES
-            COL_DIST  LOGO_6L      COL_RES "shell:   " COL_DIST "%s\n"                        COL_RES
-            COL_DIST  LOGO_7L      COL_RES "ram:     " COL_DIST "%lum / %lum / %lum / %lum\n" COL_RES
-            COL_DIST  LOGO_8L      COL_RES "swap:    " COL_DIST "%lum / %lum\n"               COL_RES
-            COL_DIST  LOGO_9L      COL_RES "procs:   " COL_DIST "%d\n"                        COL_RES
+            COL_DIST_B LOGO_1L "%s" COL_FG_B "@"                 COL_DIST "%s\n"                        COL_RES
+            COL_DIST_B LOGO_2L      COL_FG_B "distro:  " COL_RES COL_DIST DISTRONAME"\n"                COL_RES
+            COL_DIST_B LOGO_3L      COL_FG_B "kernel:  " COL_RES COL_DIST "%s\n"                        COL_RES
+            COL_DIST_B LOGO_4L      COL_FG_B "uptime:  " COL_RES COL_DIST "%lih %lim\n"                 COL_RES
+            COL_DIST_B LOGO_5L      COL_FG_B "loadavg: " COL_RES COL_DIST "%.2f %.2f %.2f\n"            COL_RES
+            COL_DIST_B LOGO_6L      COL_FG_B "shell:   " COL_RES COL_DIST "%s\n"                        COL_RES
+            COL_DIST_B LOGO_7L      COL_FG_B "ram:     " COL_RES COL_DIST "%lum / %lum / %lum / %lum\n" COL_RES
+            COL_DIST_B LOGO_8L      COL_FG_B "swap:    " COL_RES COL_DIST "%lum / %lum\n"               COL_RES
+            COL_DIST_B LOGO_9L      COL_FG_B "procs:   " COL_RES COL_DIST "%d\n"                        COL_RES
 
             "\n",
             pw -> pw_name, uinfo.nodename,

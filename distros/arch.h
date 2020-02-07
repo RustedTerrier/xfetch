@@ -5,6 +5,7 @@
 
 #define DISTRONAME "Arch Linux"
 #define COL_DIST   COL_CYAN
+#define COL_DIST_B COL_CYAN_B
 
 #define LOGO_1L "       /\\        "
 #define LOGO_2L "      /  \\       "

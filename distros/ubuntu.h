@@ -5,6 +5,7 @@
 
 #define DISTRONAME "Ubuntu Linux"
 #define COL_DIST   COL_RED
+#define COL_DIST_B COL_RED_B
 
 #define LOGO_1L "          _   "
 #define LOGO_2L "      ---(_)  "
