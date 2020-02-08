@@ -42,4 +42,4 @@ install:
 	@echo "bitfetch -> ${PREFIX}/bin/bitfetch"
 
 clean:
-	rm bitfetch
+	@rm bitfetch -v
