@@ -5,21 +5,6 @@
 #include <sys/sysinfo.h>
 #include <unistd.h>
 
-// TODO: better way to include this files
-#if BITFETCH_GENTOO
-#include "distros/gentoo.h"
-#elif BITFETCH_ARCH
-#include "distros/arch.h"
-#elif BITFETCH_CRUX
-#include "distros/crux.h"
-#elif BITFETCH_UBUNTU
-#include "distros/ubuntu.h"
-#elif BITFETCH_VOID
-#include "distros/void.h"
-#else
-#include "distros/generic.h"
-#endif
-
 int main()
 {
     struct utsname uinfo;

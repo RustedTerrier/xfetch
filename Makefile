@@ -13,27 +13,27 @@ help:
 	@echo "'make clean' to remove bitfetch's binary"
 
 bitfetch-gentoo:
-	@${CC} bitfetch.c -DBITFETCH_GENTOO ${CFLAGS} -o bitfetch
+	@${CC} bitfetch.c -include distros/gentoo.h ${CFLAGS} -o bitfetch
 	@echo "bitfetch.c + distros/gentoo.h -> bitfetch"
 
 bitfetch-arch:
-	@${CC} bitfetch.c -DBITFETCH_ARCH ${CFLAGS} -o bitfetch
+	@${CC} bitfetch.c -include distros/arch.h ${CFLAGS} -o bitfetch
 	@echo "bitfetch.c + distros/arch.h -> bitfetch"
 
 bitfetch-ubuntu:
-	@${CC} bitfetch.c -DBITFETCH_UBUNTU ${CFLAGS} -o bitfetch
+	@${CC} bitfetch.c -include distros/ubuntu.h ${CFLAGS} -o bitfetch
 	@echo "bitfetch.c + distros/ubuntu.h -> bitfetch"
 
 bitfetch-crux:
-	@${CC} bitfetch.c -DBITFETCH_CRUX ${CFLAGS} -o bitfetch
+	@${CC} bitfetch.c -include distros/crux.h ${CFLAGS} -o bitfetch
 	@echo "bitfetch.c + distros/crux.h -> bitfetch"
 
 bitfetch-generic:
-	@${CC} bitfetch.c ${CFLAGS} -o bitfetch
+	@${CC} bitfetch.c -include distros/generic.h ${CFLAGS} -o bitfetch
 	@echo "bitfetch.c + distros/generic.h -> bitfetch"
 
 bitfetch-void:
-	@${CC} bitfetch.c -DBITFETCH_VOID ${CFLAGS} -o bitfetch
+	@${CC} bitfetch.c -include distros/void.h ${CFLAGS} -o bitfetch
 	@echo "bitfetch.c + distros/void.h -> bitfetch"
 
 install:
