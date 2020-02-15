@@ -2,8 +2,8 @@
 
 ```
 $ make help                     # show help
-$ make CC=clang bitfetch-gentoo # build bitfetch with gentoo-logo using clang as a C compiler
-$ sudo make install             # install bitfetch to /usr/local/bin (warning: you need to build it before install)
+$ make CC=clang bitfetch        # build bitfetch using clang as a C compiler
+$ sudo make install             # install bitfetch to /usr/local/bin
 ```
 
 ![screenshot](./bitfetch.png)

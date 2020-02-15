@@ -21,7 +21,7 @@ list-vars:
 	@echo "CC = ${CC}"
 	@echo "CFLAGS = ${CFLAGS}"
 	@echo "PREFIX = ${PREFIX}"
-	@echo "DISTRO_NAME = ${NAME}"
+	@echo "ID = ${NAME}"
 	@echo ""
 
 .PHONY: bitfetch-gentoo
@@ -56,8 +56,8 @@ bitfetch-void: list-vars
 
 .PHONY: bitfetch
 bitfetch:
-	@case "${NAME}" in\
-		"void") make -s bitfetch-void CC="${CC}" PREFIX="${PREFIX}" CFLAGS="${CFLAGS}" ;; \
+	@case "${ID}" in\
+		"void" | "gentoo" | "ubuntu" | "crux" | "arch") make -s bitfetch-${ID} CC="${CC}" PREFIX="${PREFIX}" CFLAGS="${CFLAGS}" ;; \
 		*)   make -s bitfetch-generic CC="${CC}" PREFIX="${PREFIX}" CFLAGS="${CFLAGS}" ;; \
 	esac
 
