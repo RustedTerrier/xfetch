@@ -2,44 +2,71 @@ CC = gcc
 CFLAGS = -O3
 PREFIX = /usr/local/
 
-help:
-	@echo "'make help' to show this message."
-	@echo "'make bitfetch-generic' to build generic version of bitfetch"
-	@echo "'make CC=clang bitfetch-generic' to build generic version of bitfetch with clang instead of gcc"
-	@echo "'make bitfetch-<distro>' to build bitfetch with <distro>-logo (distro can be: gentoo, arch, ubuntu, crux or void)"
-	@echo "'make CFLAGS=\"-DCOL_DISABLE_BOLD\" bitfetch' to build bitfetch's version without bold colors"
-	@echo "'make install' to install bitfetch's binary to /usr/local/bin/ (warning: you must build it before installing)"
-	@echo "'make PREFIX=${HOME} install' to install bitfetch's binary to ${HOME}/bin"
-	@echo "'make clean' to remove bitfetch's binary"
+include /etc/os-release
 
-bitfetch-gentoo:
+.PHONY: bitfetch
+help:
+	@echo " 'make help' to show this message.\n" \
+		"'make bitfetch-generic' to build generic version of bitfetch\n" \
+		"'make bitfetch' to try building bitfetch with ${NAME}'s logo or with generic logo (supported now: gentoo, arch, crux, void and ubuntu)\n" \
+		"'make CC=clang bitfetch-generic' to build generic version of bitfetch with clang instead of gcc\n" \
+		"'make bitfetch-<distro>' to build bitfetch with <distro>'s logo\n" \
+		"'make CFLAGS=\"-DCOL_DISABLE_BOLD\" bitfetch' to build bitfetch's version without bold colors\n" \
+		"'make install' to build and install bitfetch's binary to /usr/local/bin/\n" \
+		"'make PREFIX=${HOME} install' to install bitfetch's binary to ${HOME}/bin\n" \
+		"'make clean' to remove bitfetch's binary"
+
+.PHONY: bitfetch
+list-vars:
+	@echo "CC = ${CC}"
+	@echo "CFLAGS = ${CFLAGS}"
+	@echo "PREFIX = ${PREFIX}"
+	@echo "DISTRO_NAME = ${NAME}"
+	@echo ""
+
+.PHONY: bitfetch-gentoo
+bitfetch-gentoo: list-vars
 	@${CC} bitfetch.c -include distros/gentoo.h ${CFLAGS} -o bitfetch
 	@echo "bitfetch.c + distros/gentoo.h -> bitfetch"
 
-bitfetch-arch:
+.PHONY: bitfetch-arch
+bitfetch-arch: list-vars
 	@${CC} bitfetch.c -include distros/arch.h ${CFLAGS} -o bitfetch
 	@echo "bitfetch.c + distros/arch.h -> bitfetch"
 
-bitfetch-ubuntu:
+.PHONY: bitfetch-ubuntu
+bitfetch-ubuntu: list-vars
 	@${CC} bitfetch.c -include distros/ubuntu.h ${CFLAGS} -o bitfetch
 	@echo "bitfetch.c + distros/ubuntu.h -> bitfetch"
 
-bitfetch-crux:
+.PHONY: bitfetch-crux
+bitfetch-crux: list-vars
 	@${CC} bitfetch.c -include distros/crux.h ${CFLAGS} -o bitfetch
 	@echo "bitfetch.c + distros/crux.h -> bitfetch"
 
-bitfetch-generic:
+.PHONY: bitfetch-generic
+bitfetch-generic: list-vars
 	@${CC} bitfetch.c -include distros/generic.h ${CFLAGS} -o bitfetch
 	@echo "bitfetch.c + distros/generic.h -> bitfetch"
 
-bitfetch-void:
+.PHONY: bitfetch-void
+bitfetch-void: list-vars
 	@${CC} bitfetch.c -include distros/void.h ${CFLAGS} -o bitfetch
 	@echo "bitfetch.c + distros/void.h -> bitfetch"
 
-install:
+.PHONY: bitfetch
+bitfetch:
+	@case "${NAME}" in\
+		"void") make -s bitfetch-void CC="${CC}" PREFIX="${PREFIX}" CFLAGS="${CFLAGS}" ;; \
+		*)   make -s bitfetch-generic CC="${CC}" PREFIX="${PREFIX}" CFLAGS="${CFLAGS}" ;; \
+	esac
+
+.PHONY: install
+install: bitfetch
 	@cp bitfetch ${PREFIX}/bin/bitfetch
 	@mkdir ${PREFIX}/bin 2> /dev/null || true
 	@echo "bitfetch -> ${PREFIX}/bin/bitfetch"
 
+.PHONY: clean
 clean:
 	@rm bitfetch -v
