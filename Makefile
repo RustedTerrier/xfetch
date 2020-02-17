@@ -8,7 +8,7 @@ include /etc/os-release
 help:
 	@echo " 'make help' to show this message.\n" \
 		"'make bitfetch-build ID=generic' to build generic version of bitfetch\n" \
-		"'make bitfetch' to try building bitfetch with ${NAME}'s logo or with generic logo (supported now: gentoo, arch, crux, void and ubuntu)\n" \
+		"'make bitfetch' to try building bitfetch with ${NAME}'s logo or with generic logo (supported now: gentoo, arch, void and ubuntu)\n" \
 		"'make CC=clang bitfetch' to build bitfetch with clang instead of gcc\n" \
 		"'make CFLAGS=\"-DCOL_DISABLE_BOLD\" bitfetch' to build bitfetch's version without bold colors\n" \
 		"'make install' to build and install bitfetch's binary to /usr/local/bin/\n" \
@@ -31,7 +31,7 @@ bitfetch-build: list-vars
 .PHONY: bitfetch
 bitfetch:
 	@case "${ID}" in \
-		"void" | "gentoo" | "ubuntu" | "crux" | "arch") make bitfetch-build ID="${ID}" CC="${CC}" CFLAGS="${CFLAGS}" PREFIX="${PREFIX}" -s ;; \
+		"void" | "gentoo" | "ubuntu" | "arch") make bitfetch-build ID="${ID}" CC="${CC}" CFLAGS="${CFLAGS}" PREFIX="${PREFIX}" -s ;; \
 		*) make bitfetch-build ID="generic" CC="${CC}" CFLAGS="${CFLAGS}" PREFIX="${PREFIX}" -s ;; \
 	esac
 
