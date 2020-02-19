@@ -22,7 +22,7 @@ int main()
             "\n"
             COL_DIST_B LOGO_1L "%s" COL_FG_B "@"                 COL_DIST "%s\n"                        COL_RES
             COL_DIST_B LOGO_2L      COL_FG_B "distro:  " COL_RES COL_DIST DISTRONAME "\n"               COL_RES
-            COL_DIST_B LOGO_3L      COL_FG_B "kernel:  " COL_RES COL_DIST "%s\n"                        COL_RES
+            COL_DIST_B LOGO_3L      COL_FG_B "kernel:  " COL_RES COL_DIST "%s %s\n"                     COL_RES
             COL_DIST_B LOGO_4L      COL_FG_B "uptime:  " COL_RES COL_DIST "%lih %lim\n"                 COL_RES
             COL_DIST_B LOGO_5L      COL_FG_B "loadavg: " COL_RES COL_DIST "%.2f %.2f %.2f\n"            COL_RES
             COL_DIST_B LOGO_6L      COL_FG_B "shell:   " COL_RES COL_DIST "%s\n"                        COL_RES
@@ -32,7 +32,7 @@ int main()
             "\n",
 
             pw -> pw_name, uinfo.nodename,
-            uinfo.release,
+            uinfo.release, uinfo.machine,
             sinfo.uptime / 3600, (sinfo.uptime / 60) - (sinfo.uptime / 3600 * 60),
             loads[0], loads[1], loads[2],
             pw -> pw_shell,
