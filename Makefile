@@ -6,14 +6,14 @@ include /etc/os-release
 
 .PHONY: bitfetch
 help:
-	@echo " 'make help' to show this message.\n" \
-		"'make bitfetch-build ID=generic' to build generic version of bitfetch\n" \
-		"'make bitfetch' to try building bitfetch with ${NAME}'s logo or with generic logo (supported now: gentoo, arch, void and ubuntu)\n" \
-		"'make CC=clang bitfetch' to build bitfetch with clang instead of gcc\n" \
-		"'make CFLAGS=\"-DCOL_DISABLE_BOLD\" bitfetch' to build bitfetch's version without bold colors\n" \
-		"'make install' to build and install bitfetch's binary to /usr/local/bin/\n" \
-		"'make PREFIX=${HOME} install' to install bitfetch's binary to ${HOME}/bin\n" \
-		"'make clean' to remove bitfetch's binary"
+	@echo "'make help' to show this message.\n"
+	@echo "'make bitfetch ID=generic' to build generic version of bitfetch\n"
+	@echo "'make bitfetch' to try building bitfetch with ${NAME}'s logo or with generic logo (supported now: gentoo, arch, void and ubuntu)\n"
+	@echo "'make CC=clang bitfetch' to build bitfetch with clang instead of gcc\n"
+	@echo "'make CFLAGS=\"-DCOL_DISABLE_BOLD\" bitfetch' to build bitfetch's version without bold colors\n"
+	@echo "'make install' to build and install bitfetch's binary to usr/local/bin/\n"
+	@echo "'make PREFIX=${HOME} install' to install bitfetch's binary to ${HOME}bin\n"
+	@echo "'make clean' to remove bitfetch's binary"
 
 .PHONY: bitfetch
 list-vars:
