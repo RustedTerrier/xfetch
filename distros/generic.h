@@ -7,14 +7,16 @@
 #define COL_DIST   COL_WHITE
 #define COL_DIST_B COL_WHITE_B
 
-#define LOGO_1L "              "
-#define LOGO_2L "      ___     "
-#define LOGO_3L "     (.· |    "
-#define LOGO_4L "     (<> |    "
-#define LOGO_5L "    / __  \\   "
-#define LOGO_6L "   ( /  \\ /|  "
-#define LOGO_7L "  _/\\ __)/_)  "
-#define LOGO_8L "  \\/-____\\/   "
-#define LOGO_9L "              "
+#define DISTRO_LOGO COL_DIST_B "\n"              \
+                    COL_DIST_B "      ___\n"     \
+                    COL_DIST_B "     (.· |\n"    \
+                    COL_DIST_B "     (<> |\n"    \
+                    COL_DIST_B "    / __  \\\n"  \
+                    COL_DIST_B "   ( /  \\ /|\n" \
+                    COL_DIST_B "  _/\\ __)/_)\n" \
+                    COL_DIST_B "  \\/-____\\/\n" \
+
+#define DISTRO_LOGO_LINE_COUNT "8"
+#define DISTRO_LOGO_WIDTH      "16"
 
 #endif
