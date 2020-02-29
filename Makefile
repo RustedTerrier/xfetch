@@ -41,7 +41,7 @@ install: bitfetch
 	@cp bitfetch ${DESTDIR}${PREFIX}/bin/bitfetch
 	@echo "bitfetch -> ${DESTDIR}${PREFIX}/bin/bitfetch"
 
-.PHONY uninstall
+.PHONY: uninstall
 uninstall:
 	@rm ${DESTDIR}${PREFIX}/bin/bitfetch -v
 
