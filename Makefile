@@ -1,6 +1,6 @@
-CC = gcc
-CFLAGS = -O3 -pipe
-PREFIX = /usr/local/
+CC     ?= gcc
+CFLAGS ?= -O3 -pipe
+PREFIX ?= /usr/local/
 
 include /etc/os-release
 
@@ -37,9 +37,13 @@ bitfetch:
 
 .PHONY: install
 install: bitfetch
-	@cp bitfetch ${PREFIX}/bin/bitfetch
-	@mkdir ${PREFIX}/bin 2> /dev/null || true
-	@echo "bitfetch -> ${PREFIX}/bin/bitfetch"
+	@mkdir ${DESTDIR}${PREFIX}/bin 2> /dev/null || true
+	@cp bitfetch ${DESTDIR}${PREFIX}/bin/bitfetch
+	@echo "bitfetch -> ${DESTDIR}${PREFIX}/bin/bitfetch"
+
+.PHONY uninstall
+uninstall:
+	@rm ${DESTDIR}${PREFIX}/bin/bitfetch -v
 
 .PHONY: clean
 clean:
