@@ -37,7 +37,7 @@ bitfetch:
 
 .PHONY: install
 install: bitfetch
-	@mkdir ${DESTDIR}${PREFIX}/bin 2> /dev/null || true
+	@mkdir -p ${DESTDIR}${PREFIX}/bin 2> /dev/null || true
 	@cp -p bitfetch ${DESTDIR}${PREFIX}/bin/bitfetch
 	@echo "bitfetch -> ${DESTDIR}${PREFIX}/bin/bitfetch"
 
