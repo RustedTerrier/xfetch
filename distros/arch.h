@@ -3,7 +3,7 @@
 
 #include "colors.h"
 
-#define DISTRONAME "Arch Linux"
+#define DISTRO_NAME "Arch Linux"
 #define COL_DIST   COL_CYAN
 #define COL_DIST_B COL_CYAN_B
 

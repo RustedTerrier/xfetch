@@ -1,10 +1,10 @@
 CC = gcc
-CFLAGS = -O3
+CFLAGS = -O3 -pipe
 PREFIX = /usr/local/
 
 include /etc/os-release
 
-.PHONY: bitfetch
+.PHONY: help
 help:
 	@echo "'make help' to show this message.\n"
 	@echo "'make bitfetch ID=generic' to build generic version of bitfetch\n"
@@ -15,7 +15,7 @@ help:
 	@echo "'make PREFIX=${HOME} install' to install bitfetch's binary to ${HOME}/bin\n"
 	@echo "'make clean' to remove bitfetch's binary"
 
-.PHONY: bitfetch
+.PHONY: list-vars
 list-vars:
 	@echo "CC = ${CC}"
 	@echo "CFLAGS = ${CFLAGS}"

@@ -3,7 +3,7 @@
 
 #include "colors.h"
 
-#define DISTRONAME "Void Linux"
+#define DISTRO_NAME "Void Linux"
 #define COL_DIST   COL_GREEN
 #define COL_DIST_B COL_GREEN_B
 

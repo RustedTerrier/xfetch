@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <pwd.h>
+#include <unistd.h>
 #include <sys/utsname.h>
 #include <sys/sysinfo.h>
-#include <unistd.h>
 
 int main()
 {
@@ -18,20 +18,20 @@ int main()
 
     /* print all information */
     printf(
-
             "\n"
-                  DISTRO_LOGO
-            "\x1b[" DISTRO_LOGO_LINE_COUNT   "A"
+                    DISTRO_LOGO
+            "\x1b[" DISTRO_LOGO_LINE_COUNT "A"
 
-            "\x1b[" DISTRO_LOGO_WIDTH "C"    "%s" COL_FG_B "@"                 COL_DIST "%s\n"                        COL_RES
-            "\x1b[" DISTRO_LOGO_WIDTH "C"         COL_FG_B "distro:  " COL_RES COL_DIST DISTRONAME "\n"               COL_RES
-            "\x1b[" DISTRO_LOGO_WIDTH "C"         COL_FG_B "kernel:  " COL_RES COL_DIST "%s %s\n"                     COL_RES
-            "\x1b[" DISTRO_LOGO_WIDTH "C"         COL_FG_B "uptime:  " COL_RES COL_DIST "%lih %lim\n"                 COL_RES
-            "\x1b[" DISTRO_LOGO_WIDTH "C"         COL_FG_B "loadavg: " COL_RES COL_DIST "%.2f %.2f %.2f\n"            COL_RES
-            "\x1b[" DISTRO_LOGO_WIDTH "C"         COL_FG_B "shell:   " COL_RES COL_DIST "%s\n"                        COL_RES
-            "\x1b[" DISTRO_LOGO_WIDTH "C"         COL_FG_B "ram:     " COL_RES COL_DIST "%lum / %lum / %lum / %lum\n" COL_RES
-            "\x1b[" DISTRO_LOGO_WIDTH "C"         COL_FG_B "swap:    " COL_RES COL_DIST "%lum / %lum\n"               COL_RES
-            "\x1b[" DISTRO_LOGO_WIDTH "C"         COL_FG_B "procs:   " COL_RES COL_DIST "%d\n"                        COL_RES
+            "\x1b[" DISTRO_LOGO_WIDTH "C"  "%s" COL_FG_B "@"                 COL_DIST "%s\n"
+            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "distro:  " COL_RES COL_DIST DISTRO_NAME "\n"
+            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "kernel:  " COL_RES COL_DIST "%s %s\n"
+            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "uptime:  " COL_RES COL_DIST "%lih %lim\n"
+            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "loadavg: " COL_RES COL_DIST "%.2f %.2f %.2f\n"
+            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "shell:   " COL_RES COL_DIST "%s\n"
+            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "ram:     " COL_RES COL_DIST "%lum / %lum / %lum / %lum\n"
+            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "swap:    " COL_RES COL_DIST "%lum / %lum\n"
+            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "procs:   " COL_RES COL_DIST "%d\n"
+                    COL_RES
             "\n",
 
             pw -> pw_name, uinfo.nodename,

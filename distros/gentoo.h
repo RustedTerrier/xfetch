@@ -3,7 +3,7 @@
 
 #include "colors.h"
 
-#define DISTRONAME "Gentoo Linux"
+#define DISTRO_NAME "Gentoo Linux"
 #define COL_DIST   COL_MAGENTA
 #define COL_DIST_B COL_MAGENTA_B
 

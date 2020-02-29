@@ -3,7 +3,7 @@
 
 #include "colors.h"
 
-#define DISTRONAME "Generic Linux"
+#define DISTRO_NAME "Generic Linux"
 #define COL_DIST   COL_WHITE
 #define COL_DIST_B COL_WHITE_B
 

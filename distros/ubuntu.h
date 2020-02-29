@@ -3,7 +3,7 @@
 
 #include "colors.h"
 
-#define DISTRONAME "Ubuntu Linux"
+#define DISTRO_NAME "Ubuntu Linux"
 #define COL_DIST   COL_RED
 #define COL_DIST_B COL_RED_B
 
