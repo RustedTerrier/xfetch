@@ -7,8 +7,7 @@
 #define COL_DIST   COL_GREEN
 #define COL_DIST_B COL_GREEN_B
 
-#define DISTRO_LOGO COL_DIST_B "\n"                \
-                    COL_DIST_B "     _______\n"      \
+#define DISTRO_LOGO COL_DIST_B "     _______\n"      \
                     COL_DIST_B "     \\_____ `-\n"   \
                     COL_DIST_B "  /\\   ___ `- \\\n" \
                     COL_DIST_B " | |  /   \\  | |\n" \
