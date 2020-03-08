@@ -8,13 +8,13 @@
 #define COL_DIST_B  COL_GREEN_B
 
 #define DISTRO_LOGO COL_DIST_B "\n"                 \
-                               " _____________\n"   \
-                               "|_            \\\n" \
-                               "  |  | _____  |\n"  \
-                               "  |  | | | |  |\n"  \
-                               "  |  | | | |  |\n"  \
-                               "  |  \\_____/  |\n" \
-                               "  \\___________/\n" \
+                               "  _____________\n"   \
+                               " |_            \\\n" \
+                               "   |  | _____  |\n"  \
+                               "   |  | | | |  |\n"  \
+                               "   |  | | | |  |\n"  \
+                               "   |  \\_____/  |\n" \
+                               "   \\___________/\n" \
 
 #define DISTRO_LOGO_LINE_COUNT "8"
 #define DISTRO_LOGO_WIDTH      "17"
