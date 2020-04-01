@@ -31,7 +31,7 @@ bitfetch-build: list-vars
 .PHONY: bitfetch
 bitfetch:
 	@case "${ID}" in \
-		"void" | "gentoo" | "ubuntu" | "arch" | "linuxmint" | "manjaro" | "fedora" | "opensuse-*") make bitfetch-build ID="${ID}" CC="${CC}" CFLAGS="${CFLAGS}" PREFIX="${PREFIX}" -s ;; \
+		"void" | "gentoo" | "ubuntu" | "arch" | "linuxmint" | "manjaro" | "fedora" | "opensuse-tumbleweed" | "opensuse-leap") make bitfetch-build ID="${ID}" CC="${CC}" CFLAGS="${CFLAGS}" PREFIX="${PREFIX}" -s ;; \
 		*) make bitfetch-build ID="generic" CC="${CC}" CFLAGS="${CFLAGS}" PREFIX="${PREFIX}" -s ;; \
 	esac
 
