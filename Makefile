@@ -1,6 +1,9 @@
-CC     ?= gcc
-CFLAGS ?= -O3 -pipe
-PREFIX ?= /usr/local/
+CC      ?= gcc
+CFLAGS  ?= -O3 -pipe
+PREFIX  ?= /usr/local/
+
+DISTROS  = gentoo, arch, void, manjaro, mint, fedora, opensuse, elementary and ubuntu
+VERSION  = 1.1
 
 include /etc/os-release
 
@@ -8,7 +11,7 @@ include /etc/os-release
 help:
 	@echo "'make help' to show this message."
 	@echo "'make bitfetch ID=generic' to build generic version of bitfetch"
-	@echo "'make bitfetch' to try building bitfetch with ${NAME}'s logo or with generic logo (supported now: gentoo, arch, void, manjaro, mint, fedora, opensuse, elementary and ubuntu)"
+	@echo "'make bitfetch' to try building bitfetch with ${NAME}'s logo or with generic logo (supported now: ${DISTROS})"
 	@echo "'make CC=clang bitfetch' to build bitfetch with clang instead of gcc"
 	@echo "'make CFLAGS=\"-DCOL_DISABLE_BOLD\" bitfetch' to build bitfetch's version without bold colors"
 	@echo "'make install' to build and install bitfetch's binary to /usr/local/bin/"
@@ -21,11 +24,15 @@ list-vars:
 	@echo "CFLAGS = ${CFLAGS}"
 	@echo "PREFIX = ${PREFIX}"
 	@echo "ID = ${ID}"
+	@[ ${DESTDIR} ] && \
+		echo "DESTDIR = ${DESTDIR}" || true
 	@echo ""
 
 .PHONY: bitfetch-build
 bitfetch-build: list-vars
-	@${CC} bitfetch.c -include distros/${ID}.h ${CFLAGS} -o bitfetch
+	@${CC} bitfetch.c ${CFLAGS} -o bitfetch \
+		-DSUPPORTED_DISTRO_LIST="\"${DISTROS}\"" -DVERSION="\"${VERSION}\"" \
+		-include distros/${ID}.h
 	@echo "bitfetch.c + distros/${ID}.h -> bitfetch"
 
 .PHONY: bitfetch
