@@ -7,7 +7,7 @@ $ sudo make install             # install bitfetch to /usr/local/bin
 ```
 
 ```
-$ bitfetch -h # view help message
+$ bitfetch -h # view help message (--help also works)
 ```
 
 
