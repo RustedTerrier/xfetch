@@ -2,8 +2,8 @@ CC      ?= gcc
 CFLAGS  ?= -O3 -pipe
 PREFIX  ?= /usr/local/
 
-DISTROS  = gentoo, arch, void, manjaro, mint, fedora, opensuse, elementary and ubuntu
-VERSION  = 1.1
+DISTROS           = gentoo, arch, void, manjaro, mint, fedora, opensuse, elementary and ubuntu
+BITFETCH_VERSION  = 1.1
 
 include /etc/os-release
 
@@ -31,7 +31,7 @@ list-vars:
 .PHONY: bitfetch-build
 bitfetch-build: list-vars
 	@${CC} bitfetch.c ${CFLAGS} -o bitfetch \
-		-DSUPPORTED_DISTRO_LIST="\"${DISTROS}\"" -DVERSION="\"${VERSION}\"" \
+		-DSUPPORTED_DISTRO_LIST="\"${DISTROS}\"" -DVERSION="\"${BITFETCH_VERSION}\"" \
 		-include distros/${ID}.h
 	@echo "bitfetch.c + distros/${ID}.h -> bitfetch"
 

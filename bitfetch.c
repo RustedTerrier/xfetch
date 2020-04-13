@@ -13,9 +13,9 @@ int main(int argc, char *argv[])
             printf(COL_RED "error: unrecognized option \'%s\'\n" COL_RES, argv[1]);
         printf("bitfetch - simple cli system information tool written in C\n\n"
                "usage:\n"
-               "    " COL_GREEN "`bitfetch`"    COL_RES "    will show your distro logo and name, kernel release, uptime, load avearage, current shell, ram/swap info and number of processes\n"
-               "    " COL_GREEN "`bitfetch -h`" COL_RES " will show this message\n\n"
-               "currently supported distros: "  SUPPORTED_DISTRO_LIST "\n\n"
+               "    " COL_DIST_B "`bitfetch`"    COL_RES "    will show your distro logo and name, kernel release, uptime, load avearage, current shell, ram/swap info and number of processes\n"
+               "    " COL_DIST_B "`bitfetch -h`" COL_RES " will show this message\n\n"
+               "currently supported distros: " SUPPORTED_DISTRO_LIST "\n\n"
                "version " VERSION "\n");
         return 1;
     }
