@@ -1,27 +1,18 @@
 CC      ?= gcc
 CFLAGS  ?= -O3 -pipe
 PREFIX  ?= /usr/local/
-OS      ?= linux
 
-DISTROS           = gentoo, arch, void, manjaro, mint, fedora, opensuse, elementary and ubuntu (also openbsd and freebsd)
-BITFETCH_VERSION  = 1.1
+DISTROS = gentoo, arch, void, manjaro, mint, fedora, opensuse, elementary and ubuntu
 
-ifeq      (${OS}, linux)
-	include /etc/os-release
-	EXTRA_FLAGS = -include linux-distros/${ID}.h
-else ifeq (${OS}, openbsd)
-	ID   = openbsd
-	NAME = OpenBSD
-else ifeq (${OS}, freebsd)
-	ID   = freebsd
-	NAME = FreeBSD
-endif
+BITFETCH_VERSION = 1.1
+
+include /etc/os-release
 
 .PHONY: help
 help:
 	@echo "'make help' to show this message."
 	@echo "'make bitfetch ID=generic' to build generic version of bitfetch"
-	@echo "'make bitfetch' to try building bitfetch with ${NAME}'s logo or with generic logo"
+	@echo "'make bitfetch' to try building bitfetch with ${NAME}'s logo or with generic logo (supported now: ${DISTROS})"
 	@echo "'make CC=clang bitfetch' to build bitfetch with clang instead of gcc"
 	@echo "'make CFLAGS=\"-DCOL_DISABLE_BOLD\" bitfetch' to build bitfetch's version without bold colors"
 	@echo "'make install' to build and install bitfetch's binary to /usr/local/bin/"
@@ -34,17 +25,26 @@ list-vars:
 	@echo "CFLAGS = ${CFLAGS}"
 	@echo "PREFIX = ${PREFIX}"
 	@echo "ID = ${ID}"
+	@echo "VERSION = ${BITFETCH_VERSION}"
 	@[ ${DESTDIR} ] && \
 		echo "DESTDIR = ${DESTDIR}" || true
 	@echo ""
 
-.PHONY: bitfetch
-bitfetch: list-vars
+.PHONY: bitfetch-build
+bitfetch-build: list-vars
 	@${CC} bitfetch.c ${CFLAGS} -o bitfetch \
-		-DSUPPORTED_DISTRO_LIST="\"${DISTROS}\"" -DVERSION="\"${BITFETCH_VERSION}\"" -DID="\"${ID}\"" \
-		-include ${OS}.h \
-		${EXTRA_FLAGS}
-	@echo "bitfetch.c + ${OS}.h -> bitfetch"
+		-DSUPPORTED_DISTRO_LIST="\"${DISTROS}\"" -DVERSION="\"${BITFETCH_VERSION}\"" \
+		-include distros/${ID}.h
+	@echo "bitfetch.c + distros/${ID}.h -> bitfetch"
+
+.PHONY: bitfetch
+bitfetch:
+	@case "${ID}" in \
+		"void" | "gentoo" | "ubuntu" | "arch" | "linuxmint" | "manjaro" | "fedora" | "opensuse-tumbleweed" | "opensuse-leap" | "elementary") \
+			make bitfetch-build ID="${ID}" CC="${CC}" CFLAGS="${CFLAGS}" PREFIX="${PREFIX}" -s ;; \
+		*) \
+			make bitfetch-build ID="generic" CC="${CC}" CFLAGS="${CFLAGS}" PREFIX="${PREFIX}" -s ;; \
+	esac
 
 .PHONY: install
 install: bitfetch

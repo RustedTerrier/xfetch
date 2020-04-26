@@ -1,7 +1,9 @@
 #ifndef BITFETCH_H
 #define BITFETCH_H
 
-#define DISTRO_NAME "openSUSE Tumbleweed"
+#include "colors.h"
+
+#define DISTRO_NAME "openSUSE Leap"
 #define COL_DIST    COL_GREEN
 #define COL_DIST_B  COL_GREEN_B
 

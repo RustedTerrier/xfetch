@@ -1,6 +1,8 @@
 #ifndef BITFETCH_H
 #define BITFETCH_H
 
+#include "colors.h"
+
 #define DISTRO_NAME "ElementaryOS"
 #define COL_DIST    COL_BLUE
 #define COL_DIST_B  COL_BLUE_B

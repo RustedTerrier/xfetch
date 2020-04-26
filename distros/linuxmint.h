@@ -1,6 +1,8 @@
 #ifndef BITFETCH_H
 #define BITFETCH_H
 
+#include "colors.h"
+
 #define DISTRO_NAME "Linux Mint"
 #define COL_DIST    COL_GREEN
 #define COL_DIST_B  COL_GREEN_B

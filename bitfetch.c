@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <pwd.h>
 #include <unistd.h>
+#include <sys/utsname.h>
+#include <sys/sysinfo.h>
 #include <string.h>
 
 int main(int argc, char *argv[])
@@ -12,7 +15,7 @@ int main(int argc, char *argv[])
                "usage:\n"
                "    " COL_DIST_B "`bitfetch`"    COL_RES "    will show your distro logo and name, kernel release, uptime, load avearage, current shell, ram/swap info and number of processes\n"
                "    " COL_DIST_B "`bitfetch -h`" COL_RES " will show this message\n\n"
-               "currently supported distros: " SUPPORTED_DISTRO_LIST "\n\n"
+               "currently supported distros: "  SUPPORTED_DISTRO_LIST "\n\n"
                "version " VERSION "\n");
         return 1;
     }
