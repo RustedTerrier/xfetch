@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <pwd.h>
 #include <unistd.h>
-#include <sys/utsname.h>
-#include <sys/sysinfo.h>
 #include <string.h>
 
 int main(int argc, char *argv[])

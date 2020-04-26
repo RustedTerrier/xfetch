@@ -1,8 +1,6 @@
 #ifndef BITFETCH_H
 #define BITFETCH_H
 
-#include "colors.h"
-
 #define DISTRO_NAME "Arch Linux"
 #define COL_DIST    COL_CYAN
 #define COL_DIST_B  COL_CYAN_B
