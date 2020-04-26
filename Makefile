@@ -8,6 +8,7 @@ BITFETCH_VERSION  = 1.1
 
 ifeq      (${OS}, linux)
 	include /etc/os-release
+	EXTRA_FLAGS = -include linux-distros/${ID}.h
 else ifeq (${OS}, openbsd)
 	ID   = openbsd
 	NAME = OpenBSD
@@ -40,8 +41,9 @@ list-vars:
 .PHONY: bitfetch
 bitfetch: list-vars
 	@${CC} bitfetch.c ${CFLAGS} -o bitfetch \
-		-DSUPPORTED_DISTRO_LIST="\"${DISTROS}\"" -DVERSION="\"${BITFETCH_VERSION}\"" \
-		-include ${OS}.h -DID="\"${ID}\""
+		-DSUPPORTED_DISTRO_LIST="\"${DISTROS}\"" -DVERSION="\"${BITFETCH_VERSION}\"" -DID="\"${ID}\"" \
+		-include ${OS}.h \
+		${EXTRA_FLAGS}
 	@echo "bitfetch.c + ${OS}.h -> bitfetch"
 
 .PHONY: install

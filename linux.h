@@ -3,4 +3,3 @@
 #include <sys/sysinfo.h>
 
 #include "colors.h"
-#include "linux-distros/"ID".h"
