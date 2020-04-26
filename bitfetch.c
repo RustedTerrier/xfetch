@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
             "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "uptime:  " COL_RES COL_DIST "%lih %lim\n"
             "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "loadavg: " COL_RES COL_DIST "%.2f %.2f %.2f\n"
             "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "shell:   " COL_RES COL_DIST "%s\n"
-            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "ram:     " COL_RES COL_DIST "%lum / %lum / %lum / %lum\n"
+            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "ram:     " COL_RES COL_DIST "%lum / %lum\n"
             "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "swap:    " COL_RES COL_DIST "%lum / %lum\n"
             "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "procs:   " COL_RES COL_DIST "%d\n"
                     COL_RES
@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
             sinfo.uptime / 3600, (sinfo.uptime / 60) - (sinfo.uptime / 3600 * 60),
             loads[0], loads[1], loads[2],
             pw -> pw_shell,
-            sinfo.totalram / 1048576, sinfo.freeram / 1048576, sinfo.sharedram / 1048576, sinfo.bufferram / 1048576,
+            sinfo.totalram  / 1048576, sinfo.freeram  / 1048576,
             sinfo.totalswap / 1048576, sinfo.freeswap / 1048576,
             sinfo.procs
     );
