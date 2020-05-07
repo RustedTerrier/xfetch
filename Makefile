@@ -8,6 +8,11 @@ BITFETCH_VERSION = 1.1
 
 include /etc/os-release
 
+ifeq ($(X),1)
+	CFLAGS += -DX
+	LIBS += -lX11
+endif
+
 .PHONY: help
 help:
 	@echo "'make help' to show this message."
@@ -26,13 +31,15 @@ list-vars:
 	@echo "PREFIX = ${PREFIX}"
 	@echo "ID = ${ID}"
 	@echo "VERSION = ${BITFETCH_VERSION}"
+	@[ ${LIBS} ] && \
+		echo "LIBS = ${LIBS}" || true
 	@[ ${DESTDIR} ] && \
 		echo "DESTDIR = ${DESTDIR}" || true
 	@echo ""
 
 .PHONY: bitfetch-build
 bitfetch-build: list-vars
-	@${CC} bitfetch.c ${CFLAGS} -o bitfetch \
+	@${CC} bitfetch.c ${CFLAGS} ${LIBS} -o bitfetch \
 		-DSUPPORTED_DISTRO_LIST="\"${DISTROS}\"" -DVERSION="\"${BITFETCH_VERSION}\"" \
 		-include distros/${ID}.h
 	@echo "bitfetch.c + distros/${ID}.h -> bitfetch"
