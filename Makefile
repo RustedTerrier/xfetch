@@ -54,7 +54,7 @@ bitfetch:
 	esac
 
 .PHONY: install
-install: bitfetch
+install:
 	@mkdir -p ${DESTDIR}${PREFIX}/bin 2> /dev/null || true
 	@cp -p bitfetch ${DESTDIR}${PREFIX}/bin/bitfetch
 	@echo "bitfetch -> ${DESTDIR}${PREFIX}/bin/bitfetch"
