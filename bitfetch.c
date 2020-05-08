@@ -48,19 +48,19 @@ int main(int argc, char *argv[])
             "\n"
                     DISTRO_LOGO
             "\x1b[" DISTRO_LOGO_LINE_COUNT "A"
-            "\x1b[" DISTRO_LOGO_WIDTH "C"  "%s" COL_FG_B "@"                 COL_DIST "%s\n"
-            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "distro  " COL_RES COL_DIST DISTRO_NAME "\n"
-            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "kernel  " COL_RES COL_DIST "%s %s\n"
-            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "uptime  " COL_RES COL_DIST "%lih %lim\n"
-            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "loadavg " COL_RES COL_DIST "%.2f %.2f %.2f\n"
-            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "shell   " COL_RES COL_DIST "%s\n"
-            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "term    " COL_RES COL_DIST "%s\n"
+            "\x1b[" DISTRO_LOGO_WIDTH "C"  "%s" COL_FG_B "@"                    COL_DIST "%s\n"
+            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "distro      " COL_RES COL_DIST DISTRO_NAME "\n"
+            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "kernel      " COL_RES COL_DIST "%s %s\n"
+            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "uptime      " COL_RES COL_DIST "%lih %lim\n"
+            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "loadavg     " COL_RES COL_DIST "%.2f %.2f %.2f\n"
+            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "shell       " COL_RES COL_DIST "%s\n"
+            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "terminal    " COL_RES COL_DIST "%s\n"
 #ifdef X
-            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "res     " COL_RES COL_DIST "%dx%d\n"
+            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "resolution  " COL_RES COL_DIST "%dx%d\n"
 #endif
-            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "ram     " COL_RES COL_DIST "%lum / %lum\n"
-            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "swap    " COL_RES COL_DIST "%lum / %lum\n"
-            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "procs   " COL_RES COL_DIST "%d\n"
+            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "ram         " COL_RES COL_DIST "%lum / %lum\n"
+            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "swap        " COL_RES COL_DIST "%lum / %lum\n"
+            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "procs       " COL_RES COL_DIST "%d\n"
                     COL_RES
             "\n",
 
@@ -73,8 +73,8 @@ int main(int argc, char *argv[])
 #ifdef X
             dpy ? root_attr.width : 0, dpy ? root_attr.height : 0,
 #endif
-            sinfo.freeram  / 1048576, sinfo.totalram  / 1048576,
-            sinfo.freeswap / 1048576, sinfo.totalswap / 1048576,
+            (sinfo.totalram - sinfo.freeram)   / 1048576, sinfo.totalram  / 1048576,
+            (sinfo.totalswap - sinfo.freeswap) / 1048576, sinfo.totalswap / 1048576,
             sinfo.procs
     );
     return 0;
