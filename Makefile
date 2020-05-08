@@ -2,15 +2,22 @@ CC      ?= gcc
 CFLAGS  ?= -O3 -pipe
 PREFIX  ?= /usr/local/
 
+X ?= YES
+XINERAMA ?= YES
+
 DISTROS = gentoo, arch, void, manjaro, mint, fedora, opensuse, elementary and ubuntu
 
 BITFETCH_VERSION = 1.1
 
 include /etc/os-release
 
-ifeq ($(X),1)
+ifeq ($(X),YES)
 	CFLAGS += -DX
-	LIBS += -lX11
+	LIBS += $(shell pkg-config --libs x11)
+ifeq ($(XINERAMA),YES)
+	CFLAGS += -DXINERAMA
+	LIBS += $(shell pkg-config --libs xinerama)
+endif
 endif
 
 .PHONY: help
@@ -32,9 +39,9 @@ list-vars:
 	@echo "PREFIX = ${PREFIX}"
 	@echo "ID = ${ID}"
 	@echo "VERSION = ${BITFETCH_VERSION}"
-	@[ ${LIBS} ] && \
+	@[ "${LIBS}" ] && \
 		echo "LIBS = ${LIBS}" || true
-	@[ ${DESTDIR} ] && \
+	@[ "${DESTDIR}" ] && \
 		echo "DESTDIR = ${DESTDIR}" || true
 	@echo ""
 

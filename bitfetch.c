@@ -9,6 +9,9 @@
 #ifdef X
 #include <X11/Xlib.h>
 #endif
+#ifdef XINERAMA
+#include <X11/extensions/Xinerama.h>
+#endif
 
 int main(int argc, char *argv[])
 {
@@ -30,7 +33,15 @@ int main(int argc, char *argv[])
 
 #ifdef X
     Display *dpy;
+#ifdef XINERAMA
+    XineramaScreenInfo *xinfo;
+    XineramaScreenInfo *xinfo1;
+    char resolution[128]; // на всякий случай 128 :D
+    char _tmp_buffer[24];
+    int number_of_screens = 0;
+#else
     XWindowAttributes root_attr;
+#endif
 #endif
 
     uname(&uinfo);          // kernel info
@@ -38,9 +49,25 @@ int main(int argc, char *argv[])
     getloadavg(loads, 3);   // get load average
 
 #ifdef X
-    dpy = XOpenDisplay(NULL);
+    dpy = XOpenDisplay(NULL); // get current display
     if (dpy == NULL) fprintf(stderr, COL_RED_B "error: " COL_RES " can't open display %s\n", XDisplayName(NULL));
-    else XGetWindowAttributes(dpy, DefaultRootWindow(dpy), &root_attr); // get root window attributes
+#ifdef XINERAMA
+    else {
+        xinfo  = XineramaQueryScreens(dpy, &number_of_screens);
+        for (int i = 0;i < number_of_screens;i++) {
+            if (i == 0) {
+                sprintf(resolution, "%dx%d", xinfo[i].width, xinfo[i].height);
+            } else {
+                sprintf(_tmp_buffer, ", %dx%d", xinfo[i].width, xinfo[i].height);
+                strcat(resolution, _tmp_buffer);
+            }
+        }
+    }
+#else
+    else {
+        XGetWindowAttributes(dpy, XDefaultRootWindow(dpy), &root_attr); // get root window attributes
+    }
+#endif
 #endif
 
     /* print all information */
@@ -56,7 +83,11 @@ int main(int argc, char *argv[])
             "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "shell       " COL_RES COL_DIST "%s\n"
             "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "terminal    " COL_RES COL_DIST "%s\n"
 #ifdef X
+#ifdef XINERAMA
+            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "resolution  " COL_RES COL_DIST "%s\n"
+#else
             "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "resolution  " COL_RES COL_DIST "%dx%d\n"
+#endif
 #endif
             "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "ram         " COL_RES COL_DIST "%lum / %lum\n"
             "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "swap        " COL_RES COL_DIST "%lum / %lum\n"
@@ -71,7 +102,11 @@ int main(int argc, char *argv[])
             pw -> pw_shell,
             getenv("TERM"),
 #ifdef X
+#ifdef XINERAMA
+            resolution,
+#else
             dpy ? root_attr.width : 0, dpy ? root_attr.height : 0,
+#endif
 #endif
             (sinfo.totalram - sinfo.freeram)   / 1048576, sinfo.totalram  / 1048576,
             (sinfo.totalswap - sinfo.freeswap) / 1048576, sinfo.totalswap / 1048576,

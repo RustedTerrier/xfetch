@@ -4,7 +4,8 @@
     $ make help                     # show help
     $ make CC=clang bitfetch        # build bitfetch using clang as a C compiler
     $ sudo make install             # install bitfetch to /usr/local/bin (build it before installing)
-    $ make bitfetch X=1             # build with X11 support (depends on Xlib)
+    $ make bitfetch XINERAMA=NO     # build bitfetch without Xinerama (multimonitor) support
+    $ make bitfetch X=NO            # build bitfetch without X support
 ```
 
 ```shell
