@@ -7,7 +7,7 @@ XINERAMA ?= YES
 
 DISTROS = gentoo, arch, void, manjaro, mint, fedora, opensuse, elementary and ubuntu
 
-BITFETCH_VERSION = 1.1
+BITFETCH_VERSION = 2.0
 
 include /etc/os-release
 
