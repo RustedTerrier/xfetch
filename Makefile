@@ -20,8 +20,9 @@ help:
 	@echo "'make bitfetch' to try building bitfetch with ${NAME}'s logo or with generic logo (supported now: ${DISTROS})"
 	@echo "'make CC=clang bitfetch' to build bitfetch with clang instead of gcc"
 	@echo "'make CFLAGS=\"-DCOL_DISABLE_BOLD\" bitfetch' to build bitfetch's version without bold colors"
-	@echo "'make install' to build and install bitfetch's binary to /usr/local/bin/"
+	@echo "'make install' to install bitfetch's binary to /usr/local/bin/ (you need to build it before)"
 	@echo "'make PREFIX=${HOME} install' to install bitfetch's binary to ${HOME}/bin"
+	@echo "'make bitfetch X=1' to build bitfetch with X11 support (depends on Xlib)"
 	@echo "'make clean' to remove bitfetch's binary"
 
 .PHONY: list-vars
