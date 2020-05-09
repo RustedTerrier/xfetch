@@ -13,6 +13,10 @@
 #include <X11/extensions/Xinerama.h>
 #endif
 
+#ifndef SI_LOAD_SHIFT
+#define SI_LOAD_SHIFT 16
+#endif
+
 int main(int argc, char *argv[])
 {
     if (argc >= 2) {
@@ -29,7 +33,6 @@ int main(int argc, char *argv[])
     struct utsname uinfo;
     struct sysinfo sinfo;
     struct passwd *pw = getpwuid(geteuid());
-    double loads[3] = {0};
 
 #ifdef X
     Display *dpy;
@@ -46,7 +49,6 @@ int main(int argc, char *argv[])
 
     uname(&uinfo);          // kernel info
     sysinfo(&sinfo);        // get uptime, ram/swap info and number of current processes
-    getloadavg(loads, 3);   // get load average
 
 #ifdef X
     dpy = XOpenDisplay(NULL); // get current display
@@ -98,7 +100,7 @@ int main(int argc, char *argv[])
             pw -> pw_name, uinfo.nodename,
             uinfo.release, uinfo.machine,
             sinfo.uptime / 3600, (sinfo.uptime / 60) - (sinfo.uptime / 3600 * 60),
-            loads[0], loads[1], loads[2],
+            sinfo.loads[0] * (1.0 / (1 << SI_LOAD_SHIFT)), sinfo.loads[1] * (1.0 / (1 << SI_LOAD_SHIFT)), sinfo.loads[2] * (1.0 / (1 << SI_LOAD_SHIFT)),
             pw -> pw_shell,
             getenv("TERM"),
 #ifdef X
