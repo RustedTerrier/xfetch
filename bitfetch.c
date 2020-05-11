@@ -5,6 +5,7 @@
 #include <sys/utsname.h>
 #include <sys/sysinfo.h>
 #include <string.h>
+#include <libgen.h>
 
 #ifdef X
 #include <X11/Xlib.h>
@@ -101,7 +102,7 @@ int main(int argc, char *argv[])
             uinfo.release, uinfo.machine,
             sinfo.uptime / 3600, (sinfo.uptime / 60) - (sinfo.uptime / 3600 * 60),
             sinfo.loads[0] * (1.0 / (1 << SI_LOAD_SHIFT)), sinfo.loads[1] * (1.0 / (1 << SI_LOAD_SHIFT)), sinfo.loads[2] * (1.0 / (1 << SI_LOAD_SHIFT)),
-            pw -> pw_shell,
+            basename(pw -> pw_shell),
             getenv("TERM"),
 #ifdef X
 #ifdef XINERAMA
