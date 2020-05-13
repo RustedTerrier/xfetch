@@ -5,7 +5,7 @@ PREFIX  ?= /usr/local/
 X ?= YES
 XINERAMA ?= YES
 
-DISTROS = gentoo, arch, void, manjaro, mint, fedora, opensuse, elementary and ubuntu
+DISTROS = kiss, gentoo, arch, void, manjaro, mint, fedora, opensuse, elementary and ubuntu
 
 BITFETCH_VERSION = 2.1
 
@@ -55,7 +55,7 @@ bitfetch-build: list-vars
 .PHONY: bitfetch
 bitfetch:
 	@case "${ID}" in \
-		"void" | "gentoo" | "ubuntu" | "arch" | "linuxmint" | "manjaro" | "fedora" | "opensuse-tumbleweed" | "opensuse-leap" | "elementary") \
+		"void" | "gentoo" | "ubuntu" | "arch" | "linuxmint" | "manjaro" | "fedora" | "opensuse-tumbleweed" | "opensuse-leap" | "elementary" | "kiss") \
 			make bitfetch-build ID="${ID}" CC="${CC}" CFLAGS="${CFLAGS}" PREFIX="${PREFIX}" -s ;; \
 		*) \
 			make bitfetch-build ID="generic" CC="${CC}" CFLAGS="${CFLAGS}" PREFIX="${PREFIX}" -s ;; \
