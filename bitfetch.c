@@ -25,12 +25,17 @@ int main(int argc, char *argv[])
             printf(COL_RED "error: unrecognized option \'%s\'\n" COL_RES, argv[1]);
         printf("bitfetch - simple cli system information tool written in C\n\n"
                "usage:\n"
-               "    " COL_DIST_B "`bitfetch`"    COL_RES "    will show your distro logo and name, kernel release, uptime, load avearage, current shell, ram/swap info and number of processes\n"
+               "    " COL_DIST_B "`bitfetch`"    COL_RES "    will show your distro logo and name,\n"
+                                           "                  kernel release, uptime, load avearage,\n"
+                                           "                  current shell, screen resolutions,\n"
+                                           "                  ram/swap info and number of processes\n\n"
                "    " COL_DIST_B "`bitfetch -h`" COL_RES " will show this message\n\n"
                "currently supported distros: "  SUPPORTED_DISTRO_LIST "\n\n"
                "version " VERSION "\n");
         return 1;
     }
+
+    /* variable difinitions */
     struct utsname uinfo;
     struct sysinfo sinfo;
     struct passwd *pw = getpwuid(geteuid());
@@ -39,7 +44,6 @@ int main(int argc, char *argv[])
     Display *dpy;
 #ifdef XINERAMA
     XineramaScreenInfo *xinfo;
-    XineramaScreenInfo *xinfo1;
     char resolution[128]; // на всякий случай 128 :D
     char _tmp_buffer[24];
     int number_of_screens = 0;
@@ -48,6 +52,7 @@ int main(int argc, char *argv[])
 #endif
 #endif
 
+    /* gathering information */
     uname(&uinfo);          // kernel info
     sysinfo(&sinfo);        // get uptime, ram/swap info and number of current processes
 
@@ -97,7 +102,6 @@ int main(int argc, char *argv[])
             "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "procs       " COL_RES COL_DIST "%d\n"
                     COL_RES
             "\n",
-
             pw -> pw_name, uinfo.nodename,
             uinfo.release, uinfo.machine,
             sinfo.uptime / 3600, (sinfo.uptime / 60) - (sinfo.uptime / 3600 * 60),
@@ -106,7 +110,7 @@ int main(int argc, char *argv[])
             getenv("TERM"),
 #ifdef X
 #ifdef XINERAMA
-            resolution,
+            dpy ? resolution : "0x0",
 #else
             dpy ? root_attr.width : 0, dpy ? root_attr.height : 0,
 #endif
@@ -115,5 +119,9 @@ int main(int argc, char *argv[])
             (sinfo.totalswap - sinfo.freeswap) / 1048576, sinfo.totalswap / 1048576,
             sinfo.procs
     );
+#ifdef XINERAMA
+    if (dpy)
+        XFree(xinfo);
+#endif
     return 0;
 }
