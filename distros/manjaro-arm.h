@@ -3,7 +3,7 @@
 
 #include "colors.h"
 
-#define DISTRO_NAME "Manjaro Linux"
+#define DISTRO_NAME "Manjaro Linux (arm)"
 #define COL_DIST    COL_GREEN
 #define COL_DIST_B  COL_GREEN_B
 
