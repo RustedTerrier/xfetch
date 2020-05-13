@@ -7,7 +7,7 @@ XINERAMA ?= YES
 
 DISTROS = kiss, artix, gentoo, arch, void, manjaro, mint, fedora, opensuse, elementary and ubuntu
 
-BITFETCH_VERSION = 2.2
+BITFETCH_VERSION = 2.3
 
 ifeq ($(ID),)
 	include /etc/os-release
@@ -59,7 +59,8 @@ bitfetch:
 	@case "${ID}" in \
 		"void"          | "gentoo"     | "ubuntu" | "arch"                | \
 		"linuxmint"     | "manjaro"    | "fedora" | "opensuse-tumbleweed" | \
-		"opensuse-leap" | "elementary" | "kiss"   | "artix") \
+		"opensuse-leap" | "elementary" | "kiss"   | "artix"               | \
+		"crux") \
 			make bitfetch-build ID="${ID}" CC="${CC}" CFLAGS="${CFLAGS}" PREFIX="${PREFIX}" -s ;; \
 		*) \
 			make bitfetch-build ID="generic" CC="${CC}" CFLAGS="${CFLAGS}" PREFIX="${PREFIX}" -s ;; \

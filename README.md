@@ -12,6 +12,17 @@
     $ bitfetch -h # view help message
 ```
 
+# For CRUX, Antix and other distro without /etc/os-release file users
+
+```shell
+    # because of youre distro doesn't have /etc/os-release file you need to manually specify youre distro ID
+    # artix for Artix linux
+    # crux for CRUX linux
+    $ make bitfetch ID=crux
+    $ make bitfetch ID=artix
+    $ make bitfetch ID=asd # if you provide not supported it bitfetch will be build with generic logo.
+```
+
 
 # ATTENTION
 
