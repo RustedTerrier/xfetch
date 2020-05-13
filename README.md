@@ -20,7 +20,7 @@
     # crux for CRUX linux
     $ make bitfetch ID=crux
     $ make bitfetch ID=artix
-    $ make bitfetch ID=asd # if you provide not supported it bitfetch will be build with generic logo.
+    $ make bitfetch ID=asd # if you provide not supported ID bitfetch will be build with generic logo.
 ```
 
 
