@@ -5,11 +5,13 @@ PREFIX  ?= /usr/local/
 X ?= YES
 XINERAMA ?= YES
 
-DISTROS = kiss, gentoo, arch, void, manjaro, mint, fedora, opensuse, elementary and ubuntu
+DISTROS = kiss, artix, gentoo, arch, void, manjaro, mint, fedora, opensuse, elementary and ubuntu
 
 BITFETCH_VERSION = 2.2
 
-include /etc/os-release
+ifeq ($(ID),)
+	include /etc/os-release
+endif
 
 ifeq ($(X),YES)
 	CFLAGS += -DX
