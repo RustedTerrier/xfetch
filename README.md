@@ -12,7 +12,7 @@
     $ bitfetch -h # view help message
 ```
 
-# For CRUX, Antix and other distro without /etc/os-release file users
+# For CRUX, Artix and other distro without /etc/os-release file users
 
 ```shell
     # because of youre distro doesn't have /etc/os-release file you need to manually specify youre distro ID
