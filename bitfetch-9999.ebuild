@@ -11,12 +11,20 @@ EGIT_REPO_URI="https://gitlab.com/bit9tream/bitfetch.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE="disable-bold"
+IUSE="disable-bold X xinerama"
+
+REQUIRED_USE="
+	xinerama? ( X )
+"
+
+DEPEND="
+	X? ( x11-libs/libX11 )
+	xinerama? ( x11-libs/libXinerama )
+"
 
 src_compile() {
 	use disable-bold && append-flags "-DCOL_DISABLE_BOLD"
-	emake -j1 ID=gentoo bitfetch-build
+	emake -j1 ID=gentoo bitfetch-build X="$(usex X YES NO)" XINERAMA="$(usex xinerama YES NO)"
 }
 
 src_install() {
