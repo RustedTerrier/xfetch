@@ -22,6 +22,8 @@ ifeq ($(XINERAMA),YES)
 endif
 endif
 
+all: bitfetch
+
 .PHONY: help
 help:
 	@echo "'make help' to show this message."
@@ -31,7 +33,8 @@ help:
 	@echo "'make CFLAGS=\"-DCOL_DISABLE_BOLD\" bitfetch' to build bitfetch's version without bold colors"
 	@echo "'make install' to install bitfetch's binary to /usr/local/bin/ (you need to build it before)"
 	@echo "'make PREFIX=${HOME} install' to install bitfetch's binary to ${HOME}/bin"
-	@echo "'make bitfetch X=1' to build bitfetch with X11 support (depends on Xlib)"
+	@echo "'make bitfetch X=NO' to build bitfetch without X11 support (depends on libX11)"
+	@echo "'make bitfetch XINERAMA=NO' to build bitfetch without Xinerama support (depends on libXinerama)"
 	@echo "'make clean' to remove bitfetch's binary"
 
 .PHONY: list-vars
