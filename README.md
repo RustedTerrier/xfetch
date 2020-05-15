@@ -1,7 +1,6 @@
 # bitfetch - simple cli system information tool written in C
 
 ```shell
-    $ make help                     # show help
     $ make CC=clang bitfetch        # build bitfetch using clang as a C compiler
     $ sudo make install             # install bitfetch to /usr/local/bin (build it before installing)
     $ make bitfetch XINERAMA=NO     # build bitfetch without Xinerama (multimonitor) support
