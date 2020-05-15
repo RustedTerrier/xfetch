@@ -30,7 +30,6 @@ int main(int argc, char *argv[])
                                            "                  current shell, screen resolutions,\n"
                                            "                  ram/swap info and number of processes\n\n"
                "    " COL_DIST_B "`bitfetch -h`" COL_RES " will show this message\n\n"
-               "currently supported distros: "  SUPPORTED_DISTRO_LIST "\n\n"
                "version " VERSION "\n");
         return 1;
     }
@@ -39,6 +38,11 @@ int main(int argc, char *argv[])
     struct utsname uinfo;
     struct sysinfo sinfo;
     struct passwd *pw = getpwuid(geteuid());
+
+#ifdef SHOW_PKG_NUMBER
+    FILE *fp;
+    char buffer[8];
+#endif
 
 #ifdef X
     Display *dpy;
@@ -56,6 +60,15 @@ int main(int argc, char *argv[])
     uname(&uinfo);          // kernel info
     sysinfo(&sinfo);        // get uptime, ram/swap info and number of current processes
 
+#ifdef SHOW_PKG_NUMBER
+    fp = popen(PKG_NUMBER_CMD, "r");
+    if (fp == NULL || fgets(buffer, sizeof(buffer), fp) == NULL) {
+        fprintf(stderr, COL_RED_B "error: " COL_RES "failed to get number of installed packages\n");
+    }
+    for (int i = 0;i < 8;i++)
+        if (buffer[i] == '\n')
+            buffer[i] = '\0';
+#endif
 #ifdef X
     dpy = XOpenDisplay(NULL); // get current display
     if (dpy == NULL) fprintf(stderr, COL_RED_B "error: " COL_RES " can't open display %s\n", XDisplayName(NULL));
@@ -97,9 +110,13 @@ int main(int argc, char *argv[])
             "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "resolution  " COL_RES COL_DIST "%dx%d\n"
 #endif
 #endif
+#ifdef SHOW_PKG_NUMBER
+            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "packages    " COL_RES COL_DIST "%s\n"
+#endif
             "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "ram         " COL_RES COL_DIST "%lum / %lum\n"
+#ifdef SHOW_SWAP
             "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "swap        " COL_RES COL_DIST "%lum / %lum\n"
-            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "procs       " COL_RES COL_DIST "%d\n"
+#endif
                     COL_RES
             "\n",
             pw -> pw_name, uinfo.nodename,
@@ -115,9 +132,13 @@ int main(int argc, char *argv[])
             dpy ? root_attr.width : 0, dpy ? root_attr.height : 0,
 #endif
 #endif
+#ifdef SHOW_PKG_NUMBER
+            buffer,
+#endif
             (sinfo.totalram - sinfo.freeram)   / 1048576, sinfo.totalram  / 1048576,
-            (sinfo.totalswap - sinfo.freeswap) / 1048576, sinfo.totalswap / 1048576,
-            sinfo.procs
+#ifdef SHOW_SWAP
+            (sinfo.totalswap - sinfo.freeswap) / 1048576, sinfo.totalswap / 1048576
+#endif
     );
 #ifdef XINERAMA
     if (dpy)

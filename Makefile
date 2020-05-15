@@ -2,12 +2,12 @@ CC      ?= gcc
 CFLAGS  ?= -O3 -pipe
 PREFIX  ?= /usr/local/
 
-X ?= YES
+X        ?= YES
 XINERAMA ?= YES
+PKG      ?= YES
+SWAP     ?= YES
 
-DISTROS = kiss, artix, gentoo, arch, void, manjaro, mint, fedora, opensuse, elementary and ubuntu
-
-BITFETCH_VERSION = 2.3
+BITFETCH_VERSION = 3.0
 
 ifeq ($(ID),)
 	include /etc/os-release
@@ -22,20 +22,14 @@ ifeq ($(XINERAMA),YES)
 endif
 endif
 
-all: bitfetch
+ifeq ($(PKG),YES)
+	CFLAGS += -DSHOW_PKG_NUMBER
+endif
 
-.PHONY: help
-help:
-	@echo "'make help' to show this message."
-	@echo "'make bitfetch ID=generic' to build generic version of bitfetch"
-	@echo "'make bitfetch' to try building bitfetch with ${NAME}'s logo or with generic logo (supported now: ${DISTROS})"
-	@echo "'make CC=clang bitfetch' to build bitfetch with clang instead of gcc"
-	@echo "'make CFLAGS=\"-DCOL_DISABLE_BOLD\" bitfetch' to build bitfetch's version without bold colors"
-	@echo "'make install' to install bitfetch's binary to /usr/local/bin/ (you need to build it before)"
-	@echo "'make PREFIX=${HOME} install' to install bitfetch's binary to ${HOME}/bin"
-	@echo "'make bitfetch X=NO' to build bitfetch without X11 support (depends on libX11)"
-	@echo "'make bitfetch XINERAMA=NO' to build bitfetch without Xinerama support (depends on libXinerama)"
-	@echo "'make clean' to remove bitfetch's binary"
+ifeq ($(SWAP),YES)
+	CFLAGS += -DSHOW_SWAP
+endif
+all: bitfetch
 
 .PHONY: list-vars
 list-vars:
@@ -44,6 +38,10 @@ list-vars:
 	@echo "PREFIX = ${PREFIX}"
 	@echo "ID = ${ID}"
 	@echo "VERSION = ${BITFETCH_VERSION}"
+	@echo "X11 = ${X}"
+	@echo "XINERAMA = ${XINERAMA}"
+	@echo "SWAP = ${SWAP}"
+	@echo "PKG = ${PKG}"
 	@[ "${LIBS}" ] && \
 		echo "LIBS = ${LIBS}" || true
 	@[ "${DESTDIR}" ] && \

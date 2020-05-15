@@ -6,6 +6,8 @@
     $ sudo make install             # install bitfetch to /usr/local/bin (build it before installing)
     $ make bitfetch XINERAMA=NO     # build bitfetch without Xinerama (multimonitor) support
     $ make bitfetch X=NO            # build bitfetch without X support
+    $ make bitfetch PKG=NO          # bitfetch won't show number of installed packages
+    $ make bitfetch SWAP=NO         # bitfetch won't show swap info
 ```
 
 ```shell

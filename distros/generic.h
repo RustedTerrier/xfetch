@@ -16,6 +16,10 @@
                                "  _/\\ __)/_)\n" \
                                "  \\/-____\\/\n" \
 
+#ifdef SHOW_PKG_NUMBER
+#undef SHOW_PKG_NUMBER
+#endif
+
 #define DISTRO_LOGO_LINE_COUNT "8"
 #define DISTRO_LOGO_WIDTH      "16"
 

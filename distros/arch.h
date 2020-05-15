@@ -15,6 +15,7 @@
                                "   /  (  )  \\\n"   \
                                "  / __|  |__\\\\\n" \
                                " /.`        `.\\\n"
+#define PKG_NUMBER_CMD "pacman -Qq | wc -l"
 
 #define DISTRO_LOGO_LINE_COUNT "8"
 #define DISTRO_LOGO_WIDTH      "16"
