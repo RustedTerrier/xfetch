@@ -1,0 +1,27 @@
+#ifndef BITFETCH_H
+#define BITFETCH_H
+
+#include "colors.h"
+
+#define DISTRO_NAME "Ataraxia Linux"
+#define COL_DIST    COL_WHITE
+#define COL_DIST_B  COL_WHITE_B
+
+#define DISTRO_LOGO COL_DIST_B "      ___\n"          \
+                               "      \\  \\\n"       \
+                               " _____/  /____\n"     \
+                               " \\___   _____/\n"    \
+                               "    /  /  _____\n"    \
+                               "   /  /  /___  \\\n"  \
+                               "  /  / __   /__/\n"   \
+                               " /  /  \\ \\____\n"   \
+                               " \\_/    \\_____\\\n"
+
+#ifdef SHOW_PKG_NUMBER
+#undef SHOW_PKG_NUMBER
+#endif
+
+#define DISTRO_LOGO_LINE_COUNT "9"
+#define DISTRO_LOGO_WIDTH      "17"
+
+#endif

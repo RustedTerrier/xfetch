@@ -7,10 +7,19 @@ XINERAMA ?= YES
 PKG      ?= YES
 SWAP     ?= YES
 
+MINIMAL  ?= NO
+
 BITFETCH_VERSION = 3.0
 
 ifeq ($(ID),)
 	include /etc/os-release
+endif
+
+ifeq ($(MINIMAL),YES)
+	X = NO
+	XINERAMA = NO
+	PKG = NO
+	SWAP = NO
 endif
 
 ifeq ($(X),YES)
@@ -29,6 +38,7 @@ endif
 ifeq ($(SWAP),YES)
 	CFLAGS += -DSHOW_SWAP
 endif
+
 all: bitfetch
 
 .PHONY: list-vars
@@ -61,7 +71,8 @@ bitfetch:
 		"void"          | "gentoo"      | "ubuntu" | "arch"                | \
 		"linuxmint"     | "manjaro"     | "fedora" | "opensuse-tumbleweed" | \
 		"opensuse-leap" | "elementary"  | "kiss"   | "artix"               | \
-		"crux"          | "manjaro-arm" | "debian" | "solus") \
+		"crux"          | "manjaro-arm" | "debian" | "solus"               | \
+		"ataraxia") \
 			make bitfetch-build ID="${ID}" CC="${CC}" CFLAGS="${CFLAGS}" PREFIX="${PREFIX}" -s ;; \
 		*) \
 			make bitfetch-build ID="generic" CC="${CC}" CFLAGS="${CFLAGS}" PREFIX="${PREFIX}" -s ;; \

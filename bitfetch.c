@@ -118,6 +118,7 @@ int main(int argc, char *argv[])
 #ifdef SHOW_SWAP
             "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "swap        " COL_RES COL_DIST "%lum / %lum\n"
 #endif
+            "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "procs       " COL_RES COL_DIST "%d\n"
                     COL_RES
             "\n",
             pw -> pw_name, uinfo.nodename,
@@ -136,10 +137,11 @@ int main(int argc, char *argv[])
 #ifdef SHOW_PKG_NUMBER
             buffer,
 #endif
-            (sinfo.totalram - sinfo.freeram)   / 1048576, sinfo.totalram  / 1048576
+            (sinfo.totalram - sinfo.freeram)   / 1048576, sinfo.totalram  / 1048576,
 #ifdef SHOW_SWAP
-            ,(sinfo.totalswap - sinfo.freeswap) / 1048576, sinfo.totalswap / 1048576
+            (sinfo.totalswap - sinfo.freeswap) / 1048576, sinfo.totalswap / 1048576,
 #endif
+            sinfo.procs
     );
 #ifdef XINERAMA
     if (dpy)
