@@ -28,7 +28,8 @@ int main(int argc, char *argv[])
                "    " COL_DIST_B "`bitfetch`"    COL_RES "    will show your distro logo and name,\n"
                                            "                  kernel release, uptime, load avearage,\n"
                                            "                  current shell, screen resolutions,\n"
-                                           "                  ram/swap info and number of processes\n\n"
+                                           "                  number of installed packages and\n"
+                                           "                  ram/swap info\n\n"
                "    " COL_DIST_B "`bitfetch -h`" COL_RES " will show this message\n\n"
                "version " VERSION "\n");
         return 1;
