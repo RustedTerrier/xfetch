@@ -27,7 +27,8 @@
 ## Currently supported distros:
 
 + Arch Linux
-+ ArtiX linux
++ ArtiX Linux
++ Ataraxia Linux
 + CRUX
 + Debian
 + Elementary OS
