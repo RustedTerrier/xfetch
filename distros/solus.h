@@ -17,7 +17,7 @@
 
 #define PKG_NUMBER_CMD "eopkg li | wc -l"
 
-#define DISTRO_LOGO_LINE_COUNT "8"
+#define DISTRO_LOGO_LINE_COUNT "7"
 #define DISTRO_LOGO_WIDTH      "16"
 
 #endif
