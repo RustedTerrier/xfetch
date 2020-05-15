@@ -17,9 +17,7 @@
                                " /  /  \\ \\____\n"   \
                                " \\_/    \\_____\\\n"
 
-#ifdef SHOW_PKG_NUMBER
-#undef SHOW_PKG_NUMBER
-#endif
+#define SHOW_PKG_NUMBER "neko list | wc -l"
 
 #define DISTRO_LOGO_LINE_COUNT "9"
 #define DISTRO_LOGO_WIDTH      "17"
