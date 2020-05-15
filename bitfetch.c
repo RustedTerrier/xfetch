@@ -135,9 +135,9 @@ int main(int argc, char *argv[])
 #ifdef SHOW_PKG_NUMBER
             buffer,
 #endif
-            (sinfo.totalram - sinfo.freeram)   / 1048576, sinfo.totalram  / 1048576,
+            (sinfo.totalram - sinfo.freeram)   / 1048576, sinfo.totalram  / 1048576
 #ifdef SHOW_SWAP
-            (sinfo.totalswap - sinfo.freeswap) / 1048576, sinfo.totalswap / 1048576
+            ,(sinfo.totalswap - sinfo.freeswap) / 1048576, sinfo.totalswap / 1048576
 #endif
     );
 #ifdef XINERAMA
