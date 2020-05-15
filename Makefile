@@ -58,10 +58,10 @@ bitfetch-build: list-vars
 .PHONY: bitfetch
 bitfetch:
 	@case "${ID}" in \
-		"void"          | "gentoo"     | "ubuntu" | "arch"                | \
-		"linuxmint"     | "manjaro"    | "fedora" | "opensuse-tumbleweed" | \
-		"opensuse-leap" | "elementary" | "kiss"   | "artix"               | \
-		"crux"          | "manjaro-arm") \
+		"void"          | "gentoo"      | "ubuntu" | "arch"                | \
+		"linuxmint"     | "manjaro"     | "fedora" | "opensuse-tumbleweed" | \
+		"opensuse-leap" | "elementary"  | "kiss"   | "artix"               | \
+		"crux"          | "manjaro-arm" | "debian") \
 			make bitfetch-build ID="${ID}" CC="${CC}" CFLAGS="${CFLAGS}" PREFIX="${PREFIX}" -s ;; \
 		*) \
 			make bitfetch-build ID="generic" CC="${CC}" CFLAGS="${CFLAGS}" PREFIX="${PREFIX}" -s ;; \
