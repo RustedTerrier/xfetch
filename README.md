@@ -24,6 +24,23 @@
     $ make bitfetch ID=asd # if you provide not supported ID bitfetch will be build with generic logo.
 ```
 
+## Currently supported distros:
+
++ Arch Linux
++ ArtiX linux
++ CRUX
++ Debian
++ Elementary OS
++ Fedora Linux
++ Gentoo Linux
++ Kiss Linux
++ Linuxmint
++ Manjaro Linux
++ Opensuse-leap
++ Opensuse-tumbleweed
++ Solus
++ Ubuntu Linux
++ Void Linux
 
 # ATTENTION
 
