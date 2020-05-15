@@ -61,7 +61,7 @@ bitfetch:
 		"void"          | "gentoo"      | "ubuntu" | "arch"                | \
 		"linuxmint"     | "manjaro"     | "fedora" | "opensuse-tumbleweed" | \
 		"opensuse-leap" | "elementary"  | "kiss"   | "artix"               | \
-		"crux"          | "manjaro-arm" | "debian") \
+		"crux"          | "manjaro-arm" | "debian" | "solus") \
 			make bitfetch-build ID="${ID}" CC="${CC}" CFLAGS="${CFLAGS}" PREFIX="${PREFIX}" -s ;; \
 		*) \
 			make bitfetch-build ID="generic" CC="${CC}" CFLAGS="${CFLAGS}" PREFIX="${PREFIX}" -s ;; \
