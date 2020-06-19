@@ -16,7 +16,7 @@
                                "  _/\\ __)/_)\n" \
                                "  \\/-____\\/\n" \
 
-#define PKG_NUMBER_CMD "kiss l | wc -l"
+#define PKG_NUMBER_CMD "kiss l"
 
 #define DISTRO_LOGO_LINE_COUNT "8"
 #define DISTRO_LOGO_WIDTH      "16"

@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
 
 #ifdef SHOW_PKG_NUMBER
     FILE *fp;
-    char buffer[8];
+    unsigned long pkg_count = 0;
 #endif
 
 #ifdef X
@@ -63,12 +63,12 @@ int main(int argc, char *argv[])
 
 #ifdef SHOW_PKG_NUMBER
     fp = popen(PKG_NUMBER_CMD, "r");
-    if (fp == NULL || fgets(buffer, sizeof(buffer), fp) == NULL) {
+    if (fp == NULL)
         fprintf(stderr, COL_RED_B "error: " COL_RES "failed to get number of installed packages\n");
-    }
-    for (int i = 0;i < 8;i++)
-        if (buffer[i] == '\n')
-            buffer[i] = '\0';
+    for (char c = getc(fp);c != EOF;c = getc(fp))
+        if (c == '\n')
+            pkg_count++;
+    pclose(fp);
 #endif
 #ifdef X
     dpy = XOpenDisplay(NULL); // get current display
@@ -112,7 +112,7 @@ int main(int argc, char *argv[])
 #endif
 #endif
 #ifdef SHOW_PKG_NUMBER
-        "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "packages    " COL_RES COL_DIST "%s\n"
+        "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "packages    " COL_RES COL_DIST "%lu\n"
 #endif
         "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "ram         " COL_RES COL_DIST "%lum / %lum\n"
 #ifdef SHOW_SWAP
@@ -135,7 +135,7 @@ int main(int argc, char *argv[])
 #endif
 #endif
 #ifdef SHOW_PKG_NUMBER
-        buffer,
+        pkg_count,
 #endif
         (sinfo.totalram - sinfo.freeram)   / 1048576, sinfo.totalram  / 1048576,
 #ifdef SHOW_SWAP

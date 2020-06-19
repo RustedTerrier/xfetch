@@ -14,6 +14,7 @@
                                " | |  \\___/  | |\n" \
                                "  \\ `-_____  \\/\n" \
                                "   `-______\\\n"
+
 #define PKG_SHOW_CMD "xbps-query -l"
 
 #define DISTRO_LOGO_LINE_COUNT "7"

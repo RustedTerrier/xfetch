@@ -16,7 +16,7 @@
                                "      \\_______\n"  \
                                " --__________/\n"
 
-#define PKG_NUMBER_CMD "rpm -qa | wc -l"
+#define PKG_NUMBER_CMD "rpm -qa"
 
 #define DISTRO_LOGO_LINE_COUNT "8"
 #define DISTRO_LOGO_WIDTH      "16"

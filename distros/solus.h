@@ -15,7 +15,7 @@
                                " +------------+\n"  \
                                " \\____________/\n"
 
-#define PKG_NUMBER_CMD "eopkg li | wc -l"
+#define PKG_NUMBER_CMD "eopkg li"
 
 #define DISTRO_LOGO_LINE_COUNT "7"
 #define DISTRO_LOGO_WIDTH      "16"

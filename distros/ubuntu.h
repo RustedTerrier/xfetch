@@ -15,7 +15,7 @@
                                "   \\  --- _/\n" \
                                "      ---(_)\n"
 
-#define PKG_NUMBER_CMD "dpkg -l | wc -l"
+#define PKG_NUMBER_CMD "dpkg -l"
 
 #define DISTRO_LOGO_LINE_COUNT "7"
 #define DISTRO_LOGO_WIDTH      "16"
