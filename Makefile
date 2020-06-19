@@ -1,6 +1,7 @@
 CC      ?= gcc
 CFLAGS  ?= -O3 -pipe
 PREFIX  ?= /usr/local/
+LIBS     = -lpthread
 
 X        ?= YES
 XINERAMA ?= YES

@@ -6,6 +6,7 @@
 #include <sys/sysinfo.h>
 #include <string.h>
 #include <libgen.h>
+#include <pthread.h>
 
 #ifdef X
 #include <X11/Xlib.h>
@@ -16,6 +17,31 @@
 
 #ifndef SI_LOAD_SHIFT
 #define SI_LOAD_SHIFT 16
+#endif
+
+#ifdef X
+    Display *dpy;
+#ifdef XINERAMA
+    XineramaScreenInfo *xinfo;
+    char resolution[128]; // на всякий случай 128 :D
+    char _tmp_buffer[24];
+    int number_of_screens = 0;
+#else
+    XWindowAttributes root_attr;
+#endif
+#endif
+
+#ifdef SHOW_PKG_NUMBER
+    FILE *fp;
+    unsigned long pkg_count = 0;
+#endif
+
+#ifdef X
+void *get_resolution(void *argv);
+#endif
+
+#ifdef SHOW_PKG_NUMBER
+void *get_pkg(void *argv);
 #endif
 
 int main(int argc, char *argv[])
@@ -38,58 +64,27 @@ int main(int argc, char *argv[])
     /* variable difinitions */
     struct utsname uinfo;
     struct sysinfo sinfo;
-    struct passwd *pw = getpwuid(geteuid());
-
-#ifdef SHOW_PKG_NUMBER
-    FILE *fp;
-    unsigned long pkg_count = 0;
-#endif
+    struct passwd *pw;
 
 #ifdef X
-    Display *dpy;
-#ifdef XINERAMA
-    XineramaScreenInfo *xinfo;
-    char resolution[128]; // на всякий случай 128 :D
-    char _tmp_buffer[24];
-    int number_of_screens = 0;
-#else
-    XWindowAttributes root_attr;
+    pthread_t get_resolution_thread;
 #endif
+#ifdef SHOW_PKG_NUMBER
+    pthread_t get_pkg_thread;
 #endif
 
     /* gathering information */
     uname(&uinfo);          // kernel info
     sysinfo(&sinfo);        // get uptime, ram/swap info and number of current processes
+    pw = getpwuid(geteuid());
 
 #ifdef SHOW_PKG_NUMBER
-    fp = popen(PKG_NUMBER_CMD, "r");
-    if (fp == NULL)
-        fprintf(stderr, COL_RED_B "error: " COL_RES "failed to get number of installed packages\n");
-    for (char c = getc(fp);c != EOF;c = getc(fp))
-        if (c == '\n')
-            pkg_count++;
-    pclose(fp);
+    pthread_create(&get_pkg_thread, NULL, get_pkg, NULL);
+    pthread_join(get_pkg_thread, NULL);
 #endif
 #ifdef X
-    dpy = XOpenDisplay(NULL); // get current display
-    if (dpy == NULL) fprintf(stderr, COL_RED_B "error: " COL_RES " can't open display %s\n", XDisplayName(NULL));
-#ifdef XINERAMA
-    else {
-        xinfo  = XineramaQueryScreens(dpy, &number_of_screens);
-        for (int i = 0;i < number_of_screens;i++) {
-            if (i == 0) {
-                sprintf(resolution, "%dx%d", xinfo[i].width, xinfo[i].height);
-            } else {
-                sprintf(_tmp_buffer, ", %dx%d", xinfo[i].width, xinfo[i].height);
-                strcat(resolution, _tmp_buffer);
-            }
-        }
-    }
-#else
-    else {
-        XGetWindowAttributes(dpy, XDefaultRootWindow(dpy), &root_attr); // get root window attributes
-    }
-#endif
+    pthread_create(&get_resolution_thread, NULL, get_resolution, NULL);
+    pthread_join(get_resolution_thread, NULL);
 #endif
 
     /* print all information */
@@ -149,3 +144,36 @@ int main(int argc, char *argv[])
 #endif
     return 0;
 }
+
+#ifdef X
+void *get_resolution(void *argv) {
+    dpy = XOpenDisplay(NULL); // get current display
+    if (dpy == NULL) fprintf(stderr, COL_RED_B "error: " COL_RES " can't open display %s\n", XDisplayName(NULL));
+#ifdef XINERAMA
+    else {
+        xinfo  = XineramaQueryScreens(dpy, &number_of_screens);
+        sprintf(resolution, "%dx%d", xinfo[0].width, xinfo[0].height);
+        for (int i = 0;i < number_of_screens;i++) {
+                sprintf(_tmp_buffer, ", %dx%d", xinfo[i].width, xinfo[i].height);
+                strcat(resolution, _tmp_buffer);
+        }
+    }
+#else
+    else {
+        XGetWindowAttributes(dpy, XDefaultRootWindow(dpy), &root_attr); // get root window attributes
+    }
+#endif
+}
+#endif
+
+#ifdef SHOW_PKG_NUMBER
+void *get_pkg(void *argv) {
+    fp = popen(PKG_NUMBER_CMD, "r");
+    if (fp == NULL)
+        fprintf(stderr, COL_RED_B "error: " COL_RES "failed to get number of installed packages\n");
+    for (char c = getc(fp);c != EOF;c = getc(fp))
+        if (c == '\n')
+            pkg_count++;
+    pclose(fp);
+}
+#endif
