@@ -9,7 +9,7 @@ PKG      ?= YES
 
 MINIMAL  ?= NO
 
-BITFETCH_VERSION = 3.0
+BITFETCH_VERSION = 3.1
 
 ifeq ($(ID),)
 	include /etc/os-release
