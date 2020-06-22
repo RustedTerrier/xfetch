@@ -6,7 +6,6 @@ LIBS     = -lpthread
 X        ?= YES
 XINERAMA ?= YES
 PKG      ?= YES
-SWAP     ?= YES
 
 MINIMAL  ?= NO
 
@@ -36,10 +35,6 @@ ifeq ($(PKG),YES)
 	CFLAGS += -DSHOW_PKG_NUMBER
 endif
 
-ifeq ($(SWAP),YES)
-	CFLAGS += -DSHOW_SWAP
-endif
-
 all: bitfetch
 
 .PHONY: list-vars
@@ -51,7 +46,6 @@ list-vars:
 	@echo "VERSION = ${BITFETCH_VERSION}"
 	@echo "X11 = ${X}"
 	@echo "XINERAMA = ${XINERAMA}"
-	@echo "SWAP = ${SWAP}"
 	@echo "PKG = ${PKG}"
 	@[ "${LIBS}" ] && \
 		echo "LIBS = ${LIBS}" || true
