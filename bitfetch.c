@@ -19,6 +19,8 @@
 #define SI_LOAD_SHIFT 16
 #endif
 
+#define LOADAVG_SHIFT (1.0 / (1 << SI_LOAD_SHIFT))
+
 #ifdef X
     Display *dpy;
 #ifdef XINERAMA
@@ -74,8 +76,8 @@ int main(int argc, char *argv[])
 #endif
 
     /* gathering information */
-    uname(&uinfo);          // kernel info
-    sysinfo(&sinfo);        // get uptime, ram/swap info and number of current processes
+    uname(&uinfo);
+    sysinfo(&sinfo);
     pw = getpwuid(geteuid());
 
 #ifdef SHOW_PKG_NUMBER
@@ -110,16 +112,14 @@ int main(int argc, char *argv[])
         "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "packages    " COL_RES COL_DIST "%lu\n"
 #endif
         "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "ram         " COL_RES COL_DIST "%lum / %lum\n"
-#ifdef SHOW_SWAP
-        "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "swap        " COL_RES COL_DIST "%lum / %lum\n"
-#endif
+        "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "swap        " COL_RES COL_DIST "%lum / %lum%c"
         "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "procs       " COL_RES COL_DIST "%d\n"
         COL_RES
         "\n",
         pw -> pw_name, uinfo.nodename,
         uinfo.release, uinfo.machine,
         sinfo.uptime / 3600, (sinfo.uptime / 60) - (sinfo.uptime / 3600 * 60),
-        sinfo.loads[0] * (1.0 / (1 << SI_LOAD_SHIFT)), sinfo.loads[1] * (1.0 / (1 << SI_LOAD_SHIFT)), sinfo.loads[2] * (1.0 / (1 << SI_LOAD_SHIFT)),
+        sinfo.loads[0] * LOADAVG_SHIFT, sinfo.loads[1] * LOADAVG_SHIFT, sinfo.loads[2] * LOADAVG_SHIFT,
         basename(pw -> pw_shell),
         getenv("TERM"),
 #ifdef X
@@ -132,10 +132,8 @@ int main(int argc, char *argv[])
 #ifdef SHOW_PKG_NUMBER
         pkg_count,
 #endif
-        (sinfo.totalram - sinfo.freeram)   / 1048576, sinfo.totalram  / 1048576,
-#ifdef SHOW_SWAP
-        (sinfo.totalswap - sinfo.freeswap) / 1048576, sinfo.totalswap / 1048576,
-#endif
+        (sinfo.totalram - sinfo.freeram) / 1048576, sinfo.totalram / 1048576,
+        (sinfo.totalswap - sinfo.freeswap) / 1048576, sinfo.totalswap / 1048576, (sinfo.totalswap > 0 ? '\n' : '\r'),
         sinfo.procs
         );
 #ifdef XINERAMA
@@ -153,7 +151,7 @@ void *get_resolution(void *argv) {
     else {
         xinfo  = XineramaQueryScreens(dpy, &number_of_screens);
         sprintf(resolution, "%dx%d", xinfo[0].width, xinfo[0].height);
-        for (int i = 0;i < number_of_screens;i++) {
+        for (int i = 1;i < number_of_screens;i++) {
                 sprintf(_tmp_buffer, ", %dx%d", xinfo[i].width, xinfo[i].height);
                 strcat(resolution, _tmp_buffer);
         }
