@@ -11,8 +11,10 @@ MINIMAL  ?= NO
 
 BITFETCH_VERSION = 3.1
 
+# TODO: сделать нормально
 ifeq ($(ID),)
-	include /etc/os-release
+	OS_RELEASE ?= $(shell [ -f /etc/os-release ] && echo "/etc/os-release" || echo "/usr/lib/os-release")
+	include ${OS_RELEASE}
 endif
 
 ifeq ($(MINIMAL),YES)
