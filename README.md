@@ -42,6 +42,12 @@
 + Ubuntu Linux
 + Void Linux
 
+# Dependencies
++ xlib
++ xinerama
+
+## For distros with binary pm you need to install headers ( libx11-dev / libx11-devel  and libxinerama-dev / libxinerama-devel )
+
 # ATTENTION
 
 if you wanna create an issue for me to add your distro support please paste `cat /etc/os-release` output.
