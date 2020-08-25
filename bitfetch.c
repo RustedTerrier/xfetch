@@ -112,7 +112,7 @@ int main(int argc, char *argv[])
         "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "packages    " COL_RES COL_DIST "%lu\n"
 #endif
         "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "ram         " COL_RES COL_DIST "%lum / %lum\n"
-        "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "swap        " COL_RES COL_DIST "%lum / %lum%c"
+        "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "swap        " COL_RES COL_DIST "%lum / %lum\n"
         "\x1b[" DISTRO_LOGO_WIDTH "C"       COL_FG_B "procs       " COL_RES COL_DIST "%d\n"
         COL_RES
         "\n",
@@ -133,7 +133,7 @@ int main(int argc, char *argv[])
         pkg_count,
 #endif
         (sinfo.totalram - sinfo.freeram) / 1048576, sinfo.totalram / 1048576,
-        (sinfo.totalswap - sinfo.freeswap) / 1048576, sinfo.totalswap / 1048576, (sinfo.totalswap > 0 ? '\n' : '\r'),
+        (sinfo.totalswap - sinfo.freeswap) / 1048576, sinfo.totalswap / 1048576,
         sinfo.procs
         );
 #ifdef XINERAMA
