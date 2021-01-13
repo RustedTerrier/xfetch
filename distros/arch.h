@@ -18,6 +18,6 @@
 #define PKG_NUMBER_CMD "pacman -Qq"
 
 #define DISTRO_LOGO_LINE_COUNT "8"
-#define DISTRO_LOGO_WIDTH      "16"
+#define DISTRO_LOGO_WIDTH      "15"
 
 #endif
