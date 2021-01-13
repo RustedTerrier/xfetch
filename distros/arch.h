@@ -8,13 +8,13 @@
 #define COL_DIST_B  COL_CYAN_B
 
 #define DISTRO_LOGO COL_DIST_B "\n"                 \
-                               "       /\\\n"       \
-                               "      /  \\\n"      \
-                               "     /\\   \\\n"    \
-                               "    /  __  \\\n"    \
-                               "   /  (  )  \\\n"   \
-                               "  / __|  |__\\\\\n" \
-                               " /.`        `.\\\n"
+                               "      /\\\n"       \
+                               "     /  \\\n"      \
+                               "    /\\   \\\n"    \
+                               "   /  __  \\\n"    \
+                               "  /  (  )  \\\n"   \
+                               " / __|  |__\\\\\n" \
+                               "/.`        `.\\\n"
 #define PKG_NUMBER_CMD "pacman -Qq"
 
 #define DISTRO_LOGO_LINE_COUNT "8"

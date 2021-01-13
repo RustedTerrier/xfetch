@@ -8,19 +8,19 @@
 #define COL_DIST_B  COL_WHITE_B
 
 #define DISTRO_LOGO COL_DIST_B "\n"              \
-                               "      ___\n"     \
-                               "     (.· |\n"    \
-                               "     (<> |\n"    \
-                               "    / __  \\\n"  \
-                               "   ( /  \\ /|\n" \
-                               "  _/\\ __)/_)\n" \
-                               "  \\/-____\\/\n" \
+                               "     ___\n"     \
+                               "    (.· |\n"    \
+                               "    (<> |\n"    \
+                               "   / __  \\\n"  \
+                               "  ( /  \\ /|\n" \
+                               " _/\\ __)/_)\n" \
+                               "\\/-____\\/\n" \
 
 #ifdef SHOW_PKG_NUMBER
 #undef SHOW_PKG_NUMBER
 #endif
 
 #define DISTRO_LOGO_LINE_COUNT "8"
-#define DISTRO_LOGO_WIDTH      "16"
+#define DISTRO_LOGO_WIDTH      "15"
 
 #endif

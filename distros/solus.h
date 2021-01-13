@@ -8,16 +8,16 @@
 #define COL_DIST_B  COL_BLUE_B
 
 #define DISTRO_LOGO COL_DIST_B "\n"                \
-                               "    /|\n"           \
-                               "   / |\n"           \
-                               "  /  | |\\\n"       \
-                               " /   | | \\ |\\\n"  \
-                               " +------------+\n"  \
-                               " \\____________/\n"
+                               "   /|\n"           \
+                               "  / |\n"           \
+                               " /  | |\\\n"       \
+                               "/   | | \\ |\\\n"  \
+                               "+------------+\n"  \
+                               "\\____________/\n"
 
 #define PKG_NUMBER_CMD "eopkg li"
 
 #define DISTRO_LOGO_LINE_COUNT "7"
-#define DISTRO_LOGO_WIDTH      "16"
+#define DISTRO_LOGO_WIDTH      "15"
 
 #endif

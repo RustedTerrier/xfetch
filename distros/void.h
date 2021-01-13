@@ -7,13 +7,13 @@
 #define COL_DIST    COL_GREEN
 #define COL_DIST_B  COL_GREEN_B
 
-#define DISTRO_LOGO COL_DIST_B "     _______\n"      \
-                               "     \\_____ `-\n"   \
-                               "  /\\   ___ `- \\\n" \
-                               " | |  /   \\  | |\n" \
-                               " | |  \\___/  | |\n" \
-                               "  \\ `-_____  \\/\n" \
-                               "   `-______\\\n"
+#define DISTRO_LOGO COL_DIST_B "    _______\n"      \
+                               "    \\_____ `-\n"   \
+                               " /\\   ___ `- \\\n" \
+                               "| |  /   \\  | |\n" \
+                               "| |  \\___/  | |\n" \
+                               " \\ `-_____  \\/\n" \
+                               "  `-______\\\n"
 
 #define PKG_SHOW_CMD "xbps-query -l"
 
