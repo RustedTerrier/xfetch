@@ -18,6 +18,6 @@
 #define PKG_SHOW_CMD "xbps-query -l"
 
 #define DISTRO_LOGO_LINE_COUNT "7"
-#define DISTRO_LOGO_WIDTH      "17"
+#define DISTRO_LOGO_WIDTH      "16"
 
 #endif
