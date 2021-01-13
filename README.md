@@ -1,4 +1,4 @@
-# bitfetch - simple cli system information tool written in C
+# Xfetch is a fork of [bitfetch](https://gitlab.com/bit9tream/bitfetch)
 
 ```shell
     $ make CC=clang bitfetch        # build bitfetch using clang as a C compiler
@@ -45,14 +45,6 @@
 # Dependencies
 + xlib
 + xinerama
-
-## For distros with binary pm you need to install headers ( libx11-dev / libx11-devel  and libxinerama-dev / libxinerama-devel )
-
-# ATTENTION
-
-if you wanna create an issue for me to add your distro support please paste `cat /etc/os-release` output.
-
-![screenshot](./bitfetch.png)
 
 # Logo sources:
 + [ufetch](https://gitlab.com/jschx/ufetch)
