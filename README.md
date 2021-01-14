@@ -1,15 +1,15 @@
 # Xfetch is a fork of [bitfetch](https://gitlab.com/bit9tream/bitfetch)
 
 ```shell
-    $ make CC=clang bitfetch        # build bitfetch using clang as a C compiler
-    $ sudo make install             # install bitfetch to /usr/local/bin (build it before installing)
-    $ make bitfetch XINERAMA=NO     # build bitfetch without Xinerama (multimonitor) support
-    $ make bitfetch X=NO            # build bitfetch without X support
-    $ make bitfetch PKG=NO          # bitfetch won't show number of installed packages
+    $ make CC=clang xfetch        # build xfetch using clang as a C compiler
+    $ sudo make install             # install xfetch to /usr/local/bin (build it before installing)
+    $ make xfetch XINERAMA=NO     # build xfetch without Xinerama (multimonitor) support
+    $ make xfetch X=NO            # build xfetch without X support
+    $ make xfetch PKG=NO          # xfetch won't show number of installed packages
 ```
 
 ```shell
-    $ bitfetch -h # view help message
+    $ xfetch -h # view help message
 ```
 
 # For CRUX, Artix and other distro without /etc/os-release file users
@@ -18,9 +18,9 @@
     # because of youre distro doesn't have /etc/os-release file you need to manually specify youre distro ID
     # artix for Artix linux
     # crux for CRUX linux
-    $ make bitfetch ID=crux
-    $ make bitfetch ID=artix
-    $ make bitfetch ID=asd # if you provide not supported ID bitfetch will be build with generic logo.
+    $ make xfetch ID=crux
+    $ make xfetch ID=artix
+    $ make xtfetch ID=asd # if you provide not supported ID xfetch will be build with generic logo.
 ```
 
 ## Currently supported distros:
