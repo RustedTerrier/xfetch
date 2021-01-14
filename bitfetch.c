@@ -51,14 +51,14 @@ int main(int argc, char *argv[])
     if (argc >= 2) {
         if (strcmp("-h", argv[1]) != 0 && strcmp("--help", argv[1]) != 0)
             printf(COL_RED "error: unrecognized option \'%s\'\n" COL_RES, argv[1]);
-        printf("bitfetch - simple cli system information tool written in C\n\n"
+        printf("xfetch - simple cli system information tool written in C\n\n"
                "usage:\n"
-               "    " COL_DIST_B "`bitfetch`"    COL_RES "    will show your distro logo and name,\n"
+               "    " COL_DIST_B "`xfetch`"    COL_RES "    will show your distro logo and name,\n"
                                            "                  kernel release, uptime, load avearage,\n"
                                            "                  current shell, screen resolutions,\n"
                                            "                  number of installed packages and\n"
                                            "                  ram/swap info\n\n"
-               "    " COL_DIST_B "`bitfetch -h`" COL_RES " will show this message\n\n"
+               "    " COL_DIST_B "`xfetch -h`" COL_RES " will show this message\n\n"
                "version " VERSION "\n");
         return 1;
     }
