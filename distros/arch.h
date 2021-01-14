@@ -1,5 +1,5 @@
-#ifndef BITFETCH_H
-#define BITFETCH_H
+#ifndef XETCH_H
+#define XFETCH_H
 
 #include "colors.h"
 
