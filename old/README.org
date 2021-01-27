@@ -1,6 +1,6 @@
 * bitfetch - simple fetch written in C
 
-** Build and install
+** Build and installd
 #+BEGIN_SRC shell
   $ make # show make targets
   $ make build-all # build all versions of bitfetch
